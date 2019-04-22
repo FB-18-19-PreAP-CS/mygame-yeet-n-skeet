@@ -9,6 +9,13 @@ You also may want to take a look at some of the examples given on the [tutorials
 
 ## Before you start coding
 
+### Group Roles and Responsibilities
+Each member of the group will have at least one role:
+* Communications director - Sends Mr. Purdy and the group progress updates.
+* Group coordinator - Keeps the group on track, keeping scope in mind and ensuring all group members are fulfilling the responsibilities of their role
+* Resources manager - Ensures that the group's repository is kept up to date.  Handles merge conflicts.
+* Clarifying specialist - Gets clarifications and passes them on when needed.  This includes finding useful tutorials for Pygame. 
+
 **Full disclosure: I (Mr. Purdy) am NOT a game developer!  You will have to figure out a LOT of things for yourselves on this project...because of that, you will probably LEARN a LOT!**
 
 While you don't need to fully plan out your game before starting, you and your group should at least have an *idea* of what you want to create.  Before you start any programming, send an e-mail to everyone in your group and me outlining your plans.  These plans should include:
