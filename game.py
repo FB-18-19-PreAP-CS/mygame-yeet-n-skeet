@@ -6,7 +6,14 @@ from pygame.sprite import Sprite
 #class Game():
     # def __init__():
     #     pygame.init()
+class Avatar(pygame.sprite.Sprite):
+    def __init__(self, width, height):
+        pygame.sprite.Sprite.__init__(self)
 
+        self.image = pygame.Surface([width, height])
+        self.image.fill('white')
+
+        self.rect = self.image.get_rect()
 class Game():
     def __init__(self):
         pygame.init()
@@ -18,7 +25,8 @@ class Game():
 
         running = True
     
-        img = pygame.image.load('')
+        Avatar( 60,90)
+        
         while running:
             screen.blit(img, (0,0)) #replace img with an image the size
                                     #of the screen to serve as background
@@ -28,7 +36,7 @@ class Game():
 
             pygame.display.update() 
 
-game()
+Game()
 
 
 # class yeet(Sprite):
