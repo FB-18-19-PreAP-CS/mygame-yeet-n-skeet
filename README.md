@@ -6,8 +6,8 @@
 
 **GAMEPLAY LOOP:**
 
-    HOW TO PLAY:
-    
+        HOW TO PLAY:
+
     -Player Yeet controls involve keys: "A"(go left), "W"(jump), and "D"(go right).
     -Player Skeet controls involve arrow keys: "<"(go left), "^"(jump), and ">"(go right).
 
