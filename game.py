@@ -16,7 +16,8 @@ from pygame.sprite import Sprite
 class Game():
     def __init__(self):
         pygame.init()
-        self.Avatar = pygame.image.load("yeet.png")
+        self.Avatar1 = pygame.image.load("yeet.png")
+        self.Skeet = pygame.image.load("skeet.png")
         self.img = pygame.image.load("blorenge.png")
         pygame.display.set_icon(self.img) #sets an icon for the window
 
@@ -30,8 +31,10 @@ class Game():
     
         
         while running:
-            self.screen.blit(self.Avatar, (500,500)) #replace img with an image the size
+            self.screen.blit(self.img, (500,500)) #replace img with an image the size
                                     #of the screen to serve as background
+            self.screen.blit(self.Avatar1, (50, 870))
+            self.screen.blit(self.Skeet, (870, 870))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
