@@ -20,6 +20,7 @@ class Game():
     def __init__(self):
         pygame.init()
         self.yeet = pygame.image.load("yeet.png")
+        
         self.yeet_pos = (0,0) #top left of screen
         self.skeet = pygame.image.load("skeet.png")
         self.skeet_pos = (870, 870)
