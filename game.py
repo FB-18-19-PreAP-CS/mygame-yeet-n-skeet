@@ -12,15 +12,18 @@ from pygame.sprite import Sprite
 #         self.rect = self.image.get_rect()
 
 
-def move_left(x,y):
-    x -= 100
-    return x
+# def move_left(x,y):
+#     x -= 100
+#     return x
 
 class Game():
     def __init__(self):
         pygame.init()
         self.yeet = pygame.image.load("yeet.png")
+        self.yeet_pos = (0,0) #top left of screen
         self.skeet = pygame.image.load("skeet.png")
+        self.skeet_pos = (870, 870)
+
         self.img = pygame.image.load("blorenge.png")
         pygame.display.set_icon(self.img) #sets an icon for the window
 
@@ -32,6 +35,10 @@ class Game():
     def yeet_left(self):  #will change to cover both later. trying Yeet first
         yeet_pos = self.yeet.get_rect()
         self.screen.blit(self.yeet, (yeet_pos[0]-100, yeet_pos[1]))
+
+    def yeet_right(self):
+        yeet_pos = self.yeet.get_rect()
+        self.screen.blit(self.yeet, (yeet_pos[0]+100, yeet_pos[1]))
         
 
     def start(self):
@@ -40,17 +47,22 @@ class Game():
                                     #of the screen to serve as background
             
             
-            
-            
-            self.screen.blit(self.yeet, (50, 870))
-
-        
             #self.yeet_left()
+            
+            #self.screen.blit(self.yeet, (50, 870))
 
-            self.screen.blit(self.skeet, (870, 870))
+            #self.screen.blit(self.skeet, (870, 870))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        self.yeet_left()
+                    if event.key == pygame.K_RIGHT:
+                        self.yeet_right()
+
+                
             pygame.display.update() 
 
 
@@ -58,7 +70,7 @@ class Game():
 
 def main():
     g = Game()
-    g.yeet_left()
+    #g.yeet_left()
     g.start()
 
 if __name__ == "__main__":
