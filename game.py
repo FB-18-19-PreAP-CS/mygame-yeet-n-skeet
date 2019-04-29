@@ -42,18 +42,18 @@ class Game():
             #         running = False
 
             pygame.display.update() 
-        def skeet_left(self):
-            skeet_posx = 879
-            skeet_posy = 870
-            step_skeetx = 10
-            step_skeety = 10
-            if skeet_posx>screen_width-64 or skeet_posx<0:
-                step_skeetx = -step_skeetx
-            if skeet_posy>screen_height-64 or skeet_posy<0:
-                step_skeety = -step_skeety
+    def skeet_left(self):
+        skeet_posx = 879
+        skeet_posy = 870
+        step_skeetx = 10
+        step_skeety = 10
+        if skeet_posx>screen_width-64 or skeet_posx<0:
+            step_skeetx = -step_skeetx
+        if skeet_posy>screen_height-64 or skeet_posy<0:
+            step_skeety = -step_skeety
 
-            skeet_posx += step_skeetx
-            skeet_posy += step_skeety
+        skeet_posx += step_skeetx
+        skeet_posy += step_skeety
             
         # def start(self):
         #     while self.running:
@@ -76,6 +76,12 @@ class Game():
         #                     self.skeet_right()
 
 Game()
+
+def main():
+    g = Game()
+    g.skeet_left()
+if __name__ = "__main__":
+    main()
 
 # blit(avatar(x,y))
 
