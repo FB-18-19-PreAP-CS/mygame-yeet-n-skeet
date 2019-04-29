@@ -7,9 +7,9 @@
 **GAMEPLAY LOOP:**
 
     HOW TO PLAY:
-        -Player Yeet controls involve keys: "A"(go left), "W"(jump), and "D"(go right).
+        -Player Yeet controls involve keys: "<"(go left), "^"(jump), and ">"(go right).
         
-        -Player Skeet controls involve arrow keys: "<"(go left), "^"(jump), and ">"(go right).
+        -Player Skeet controls involve arrow keys: "A"(go left), "W"(jump), and "D"(go right).
 
     OBJECTIVE:
         Help Yeet and Skeet find their dog, Dave.

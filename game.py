@@ -20,10 +20,9 @@ class Game():
     def __init__(self):
         pygame.init()
         self.yeet = pygame.image.load("yeet.png")
-        
-        self.yeet_pos = (0,0) #top left of screen
+        #self.yeet_pos = (0,0) 
         self.skeet = pygame.image.load("skeet.png")
-        self.skeet_pos = (870, 870)
+        #self.skeet_pos = (870, 870)
 
         self.img = pygame.image.load("blorenge.png")
         pygame.display.set_icon(self.img) #sets an icon for the window
@@ -31,23 +30,28 @@ class Game():
         self.screen = pygame.display.set_mode((1000,1000))
         pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
         
+        self.screen.blit(self.yeet, (500,500))
+
         self.running = True
 
     def yeet_left(self):  #will change to cover both later. trying Yeet first
         yeet_pos = self.yeet.get_rect()
-        self.screen.blit(self.yeet, (yeet_pos[0]-100, yeet_pos[1]))
+        self.screen.blit(self.yeet, (yeet_pos[0]-50, yeet_pos[1]))
 
     def yeet_right(self):
         yeet_pos = self.yeet.get_rect()
-        self.screen.blit(self.yeet, (yeet_pos[0]+100, yeet_pos[1]))
+        self.screen.blit(self.yeet, (yeet_pos[0]+50, yeet_pos[1]))
+
+    def yeet_jump(self):
+        yeet_pos = self.yeet.get_rect()
+        self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]-50))
+        self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]+50))
         
 
     def start(self):
         while self.running:
-            self.screen.blit(self.img, (500,500)) #replace img with an image the size
+            self.screen.blit(self.img, (1000,1000)) #replace img with an image the size
                                     #of the screen to serve as background
-            
-            
             #self.yeet_left()
             
             #self.screen.blit(self.yeet, (50, 870))
@@ -59,15 +63,24 @@ class Game():
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
+                        self.screen.blit(self.img, (1000,1000))
+                        pygame.display.flip()
                         self.yeet_left()
+                        
                     if event.key == pygame.K_RIGHT:
+                        self.screen.blit(self.img, (1000,1000))
+                        pygame.display.flip()
                         self.yeet_right()
+                        
+                    if event.key == pygame.K_UP:
+                        
+                        self.yeet_jump()
+                        self.screen.blit(self.img, (1000,1000))
+                        pygame.display.flip()
+                        
+            self.screen.blit(self.img, (1000,1000))
+            pygame.display.flip()
 
-                
-            pygame.display.update() 
-
-
-    
 
 def main():
     g = Game()
@@ -117,3 +130,5 @@ if __name__ == "__main__":
 #             pygame.display.update() 
 
 # Game()
+
+#https://dr0id.bitbucket.io/legacy/pygame_tutorial01.html
