@@ -49,9 +49,13 @@ class Game():
         
 
     def start(self):
+        yeet_x = 50
+        yeet_y = 50
+        move = 10 #how many pixels it moves
         while self.running:
-            self.screen.blit(self.img, (1000,1000)) #replace img with an image the size
+            self.screen.blit(self.img,(500,500)) #replace img with an image the size
                                     #of the screen to serve as background
+
             #self.yeet_left()
             
             #self.screen.blit(self.yeet, (50, 870))
@@ -61,25 +65,19 @@ class Game():
                 if event.type == pygame.QUIT:
                     self.running = False
 
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
-                        self.screen.blit(self.img, (1000,1000))
-                        pygame.display.flip()
-                        self.yeet_left()
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_LEFT]:
+                    yeet_x-=move
+                
+                if keys[pygame.K_RIGHT]:
+                    yeet_x+=move
                         
-                    if event.key == pygame.K_RIGHT:
-                        self.screen.blit(self.img, (1000,1000))
-                        pygame.display.flip()
-                        self.yeet_right()
+                    #if event.key == pygame.K_UP:
                         
-                    if event.key == pygame.K_UP:
-                        
-                        self.yeet_jump()
-                        self.screen.blit(self.img, (1000,1000))
-                        pygame.display.flip()
-                        
-            self.screen.blit(self.img, (1000,1000))
-            pygame.display.flip()
+            #self.screen.blit(self.img, (500,500))
+                self.screen.blit(self.img,(500,500))
+                self.screen.blit(self.yeet, (yeet_x,yeet_y))
+                pygame.display.update()
 
 
 def main():
