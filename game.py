@@ -109,13 +109,9 @@ pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
         #                 if event.key == pygame.K_D:
         #                     self.skeet_right()
 
-Game()
 
-def main():
-    g = Game()
-    g.skeet_left()
-if __name__ == "__main__":
-    main()
+
+
 
 # blit(avatar(x,y))
 
