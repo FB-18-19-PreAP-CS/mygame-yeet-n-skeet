@@ -46,7 +46,7 @@ while running:
         Skeet_x -= move
     if keys[pygame.K_d]:
         Skeet_x += move
-    screen.fill((255,255,255))
+    screen.blit(img, (40,50))
     screen.blit(yeet, (yeet_x,yeet_y))
     screen.blit(Skeet, (Skeet_x,Skeet_y))
     pygame.display.update()
