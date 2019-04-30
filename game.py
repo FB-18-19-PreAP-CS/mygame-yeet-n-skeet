@@ -13,17 +13,15 @@ from pygame.sprite import Sprite
 #         self.image = pygame.Surface([width, height])
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
-class Game():
-    def __init__(self):
-        pygame.init()
-        self.yeet = pygame.image.load("yeet.png")
-        self.Skeet = pygame.image.load("skeet.png")
-        self.Dave = pygame.image.load('Dave .png')
-        self.img = pygame.image.load("blorenge.png")
-        pygame.display.set_icon(self.img) #sets an icon for the window
 
-        self.screen = pygame.display.set_mode((1000,1000))
-        pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+yeet = pygame.image.load("yeet.png")
+Skeet = pygame.image.load("skeet.png")
+Dave = pygame.image.load('Dave .png')
+img = pygame.image.load("blorenge.png")
+pygame.display.set_icon(img) #sets an icon for the window
+
+screen = pygame.display.set_mode((1000,1000))
+pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
         
         
@@ -32,28 +30,64 @@ class Game():
     
         
         while running:
-            self.screen.blit(self.img, (500,500)) #replace img with an image the size
-                                    #of the screen to serve as background
-            self.screen.blit(self.yeet, (10, 870))
-            self.screen.blit(self.Skeet, (879, 870))
-            self.screen.blit(self.Dave, (450, 10))
-            # for event in pygame.event.get():
-            #     if event.type == pygame.QUIT:
-            #         running = False
+            self.screen.blit(self.img, (40,50))
 
-            pygame.display.update() 
-    def skeet_left(self):
-        skeet_posx = 879
-        skeet_posy = 870
-        step_skeetx = 10
-        step_skeety = 10
-        if skeet_posx>screen_width-64 or skeet_posx<0:
-            step_skeetx = -step_skeetx
-        if skeet_posy>screen_height-64 or skeet_posy<0:
-            step_skeety = -step_skeety
 
-        skeet_posx += step_skeetx
-        skeet_posy += step_skeety
+
+
+
+
+
+
+
+
+
+
+
+
+# class Game():
+#     def __init__(self):
+#         pygame.init()
+#         self.yeet = pygame.image.load("yeet.png")
+#         self.Skeet = pygame.image.load("skeet.png")
+#         self.Dave = pygame.image.load('Dave .png')
+#         self.img = pygame.image.load("blorenge.png")
+#         pygame.display.set_icon(self.img) #sets an icon for the window
+
+#         self.screen = pygame.display.set_mode((1000,1000))
+#         pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+
+        
+        
+        
+#         running = True
+    
+        
+#         while running:
+#             self.screen.blit(self.img, (500,500)) #replace img with an image the size
+#                                     #of the screen to serve as background
+#             self.screen.blit(self.yeet, (10, 870))
+#             self.screen.blit(self.Skeet, (879, 870))
+#             self.screen.blit(self.Dave, (450, 10))
+#             # for event in pygame.event.get():
+#             #     if event.type == pygame.QUIT:
+#             #         running = False
+
+#             pygame.display.update() 
+
+
+    # def skeet_left(self):
+    #     skeet_posx = 879
+    #     skeet_posy = 870
+    #     step_skeetx = 10
+    #     step_skeety = 10
+    #     if skeet_posx>screen_width-64 or skeet_posx<0:
+    #         step_skeetx = -step_skeetx
+    #     if skeet_posy>screen_height-64 or skeet_posy<0:
+    #         step_skeety = -step_skeety
+
+    #     skeet_posx += step_skeetx
+    #     skeet_posy += step_skeety
             
         # def start(self):
         #     while self.running:
