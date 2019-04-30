@@ -13,7 +13,7 @@ from pygame.sprite import Sprite
 #         self.image = pygame.Surface([width, height])
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
-
+pygame.init()
 yeet = pygame.image.load("yeet.png")
 Skeet = pygame.image.load("skeet.png")
 Dave = pygame.image.load('Dave .png')
@@ -42,11 +42,13 @@ while running:
         yeet_x +=move
     if keys[pygame.K_LEFT]:
         yeet_x -= move
-    if keys[pygame.K_A]:
+    if keys[pygame.K_a]:
         Skeet_x -= move
-    if keys[pygame.K_D]:
+    if keys[pygame.K_d]:
         Skeet_x += move
+    screen.fill((255,255,255))
     screen.blit(yeet, (yeet_x,yeet_y))
+    screen.blit(Skeet, (Skeet_x,Skeet_y))
     pygame.display.update()
 
 
