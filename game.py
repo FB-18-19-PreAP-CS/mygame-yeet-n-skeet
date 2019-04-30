@@ -36,7 +36,7 @@ running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            run = False
+            running = False
     keys = pygame.key.get_pressed()
     if keys[pygame.K_RIGHT]:
         yeet_x +=move
