@@ -34,18 +34,18 @@ class Game():
 
         self.running = True
 
-    def yeet_left(self):  #will change to cover both later. trying Yeet first
-        yeet_pos = self.yeet.get_rect()
-        self.screen.blit(self.yeet, (yeet_pos[0]-50, yeet_pos[1]))
+    # def yeet_left(self):  #will change to cover both later. trying Yeet first
+    #     yeet_pos = self.yeet.get_rect()
+    #     self.screen.blit(self.yeet, (yeet_pos[0]-50, yeet_pos[1]))
 
-    def yeet_right(self):
-        yeet_pos = self.yeet.get_rect()
-        self.screen.blit(self.yeet, (yeet_pos[0]+50, yeet_pos[1]))
+    # def yeet_right(self):
+    #     yeet_pos = self.yeet.get_rect()
+    #     self.screen.blit(self.yeet, (yeet_pos[0]+50, yeet_pos[1]))
 
-    def yeet_jump(self):
-        yeet_pos = self.yeet.get_rect()
-        self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]-50))
-        self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]+50))
+    # def yeet_jump(self):
+    #     yeet_pos = self.yeet.get_rect()
+    #     self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]-50))
+    #     self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]+50))
         
 
     def start(self):
