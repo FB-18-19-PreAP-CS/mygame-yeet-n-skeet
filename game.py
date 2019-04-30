@@ -7,8 +7,8 @@ pygame.init()
 
 screen = pygame.display.set_mode((1000,1000))
 yeet = pygame.image.load("yeet.png")
-x = 50
-y = 50
+yeet_x = 50
+yeet_y = 50
 move = 5 #how many pixels it moves
 
 run = True
@@ -18,12 +18,12 @@ while run:
             run = False
     keys = pygame.key.get_pressed()
     if keys[pygame.K_RIGHT]:
-        x += move
+        yeet_x += move
     if keys[pygame.K_LEFT]:
-        x -= move
+        yeet_x -= move
     
     screen.fill((255,255,255)) #replace with bg
-    screen.blit(yeet, (x,y))
+    screen.blit(yeet, (yeet_x,yeet_y))
     pygame.display.update() 
 
 
