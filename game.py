@@ -16,7 +16,7 @@ from pygame.sprite import Sprite
 class Game():
     def __init__(self):
         pygame.init()
-        self.Avatar1 = pygame.image.load("yeet.png")
+        self.yeet = pygame.image.load("yeet.png")
         self.Skeet = pygame.image.load("skeet.png")
         self.Dave = pygame.image.load('Dave .png')
         self.img = pygame.image.load("blorenge.png")
@@ -34,7 +34,7 @@ class Game():
         while running:
             self.screen.blit(self.img, (500,500)) #replace img with an image the size
                                     #of the screen to serve as background
-            self.screen.blit(self.Avatar1, (10, 870))
+            self.screen.blit(self.yeet, (10, 870))
             self.screen.blit(self.Skeet, (879, 870))
             self.screen.blit(self.Dave, (450, 10))
             # for event in pygame.event.get():
@@ -80,7 +80,7 @@ Game()
 def main():
     g = Game()
     g.skeet_left()
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
 
 # blit(avatar(x,y))
