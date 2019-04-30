@@ -23,14 +23,31 @@ pygame.display.set_icon(img) #sets an icon for the window
 screen = pygame.display.set_mode((1000,1000))
 pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
+yeet_x = 10
+yeet_y = 870
+move = 5
+Skeet_x =879
+Skeet_y =870      
         
         
-        
-        running = True
+running = True
     
         
-        while running:
-            self.screen.blit(self.img, (40,50))
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_RIGHT]:
+        yeet_x +=move
+    if keys[pygame.K_LEFT]:
+        yeet_x -= move
+    if keys[pygame.K_A]:
+        Skeet_x -= move
+    if keys[pygame.K_D]:
+        Skeet_x += move
+    screen.blit(yeet, (yeet_x,yeet_y))
+    pygame.display.update()
 
 
 
