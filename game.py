@@ -2,6 +2,7 @@ import pygame, sys
 from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
+import time
 
 # class Avatar(pygame.sprite.Sprite):
 #     def __init__(self, width, height):
@@ -73,6 +74,7 @@ class Game():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
                         yeet_y -= jmove
+
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RIGHT]:
                 yeet_x += move
