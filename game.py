@@ -24,10 +24,10 @@ screen = pygame.display.set_mode((1000,1000))
 pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
 yeet_x = 10
-yeet_y = 870
+yeet_y = 905
 move = 5
 Skeet_x =879
-Skeet_y =870      
+Skeet_y =905   
         
         
 running = True
@@ -46,7 +46,8 @@ while running:
         Skeet_x -= move
     if keys[pygame.K_d]:
         Skeet_x += move
-    screen.blit(img, (40,50))
+    screen.blit(img, (1,1))
+    screen.blit(Dave, (450,10))
     screen.blit(yeet, (yeet_x,yeet_y))
     screen.blit(Skeet, (Skeet_x,Skeet_y))
     pygame.display.update()
