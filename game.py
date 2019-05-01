@@ -20,8 +20,11 @@ class Game():
     def __init__(self):
         pygame.init()
         self.yeet = pygame.image.load("yeet.png")
-        #self.yeet_pos = (0,0) 
+        #self.yeet.set_colorkey((255,255,255))
+        #self.yeet_pos = (x,y) 
+
         self.skeet = pygame.image.load("skeet.png")
+        #self.skeet.set_colorkey((255,255,255))
         #self.skeet_pos = (870, 870)
 
         self.img = pygame.image.load("blorenge.png")
@@ -50,34 +53,36 @@ class Game():
 
     def start(self):
         yeet_x = 50
-        yeet_y = 50
-        move = 10 #how many pixels it moves
+        yeet_y = 870
+        move = 7 #speed of how many pixels it moves
+        jmove = 50
+        self.screen.blit(self.yeet, (yeet_x,yeet_y))
         while self.running:
-            self.screen.blit(self.img,(500,500)) #replace img with an image the size
+            #self.screen.blit(self.img,(500,500)) #replace img with an image the size
                                     #of the screen to serve as background
 
             #self.yeet_left()
             
-            #self.screen.blit(self.yeet, (50, 870))
+            #
+            # self.screen.blit(self.yeet, (50, 870))
 
             #self.screen.blit(self.skeet, (870, 870))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.running = False
-
-                keys = pygame.key.get_pressed()
-                if keys[pygame.K_LEFT]:
-                    yeet_x-=move
-                
-                if keys[pygame.K_RIGHT]:
-                    yeet_x+=move
+                    run = False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_UP:
+                        yeet_y -= jmove
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_RIGHT]:
+                yeet_x += move
+            if keys[pygame.K_LEFT]:
+                yeet_x -= move
                         
-                    #if event.key == pygame.K_UP:
-                        
-            #self.screen.blit(self.img, (500,500))
-                self.screen.blit(self.img,(500,500))
-                self.screen.blit(self.yeet, (yeet_x,yeet_y))
-                pygame.display.update()
+            self.screen.fill((0,0,0))
+            self.screen.blit(self.img,(500,500))
+            self.screen.blit(self.yeet, (yeet_x,yeet_y))
+            pygame.display.update()
 
 
 def main():
