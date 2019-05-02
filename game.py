@@ -3,57 +3,70 @@ from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
 
-#class Game():
-    # def __init__():
-    #     pygame.init()
-# class Avatar(pygame.sprite.Sprite):
-#     def __init__(self, width, height):
-#         pygame.sprite.Sprite.__init__(self)
+pygame.init()
 
-#         self.image = pygame.Surface([width, height])
-#         self.image.fill('white')
-#         self.rect = self.image.get_rect()
-class Game():
-    def __init__(self):
-        pygame.init()
-        self.Avatar1 = pygame.image.load("yeet.png")
-        self.Skeet = pygame.image.load("skeet.png")
-        self.img = pygame.image.load("blorenge.png")
-        pygame.display.set_icon(self.img) #sets an icon for the window
+screen = pygame.display.set_mode((1000,1000))
+yeet = pygame.image.load("yeet.png")
+yeet_x = 50
+yeet_y = 50
+move = 5 #how many pixels it moves
+run = True
 
-        self.screen = pygame.display.set_mode((1000,1000))
-        pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+def border():
+    pass
 
-        
-        
-        
-        running = True
-    
-        
-        while running:
-            self.screen.blit(self.img, (500,500)) #replace img with an image the size
-                                    #of the screen to serve as background
-            self.screen.blit(self.Avatar1, (50, 870))
-            self.screen.blit(self.Skeet, (870, 870))
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_RIGHT]:
+        yeet_x += move
+    if keys[pygame.K_LEFT]:
+        yeet_x -= move
 
-            pygame.display.update() 
-
-Game()
-
-# blit(avatar(x,y))
+    screen.fill((0,0,0)) #replace with bg
+    screen.blit(yeet, (yeet_x,yeet_y))
+    pygame.display.update() 
 
 
-# class yeet(Sprite):
 
-#    def __init__(self, screen, img_filename, init_pos, init_dir, speed):
-#        Sprite.__init__(self)
-
-#        self.image = pygame.Surface([width, height])
-#        self.image.fill(color)
-
-#        self.rect = self.image.get_rect()
-#        self.char_img = pygame.image.load("Copy of yeet.jpg")
-#        self.image = self.char_img
+# class Game():
+#     def __init__(self):
+#         pygame.init()
+#         self.yeet = pygame.image.load("yeet.png")
+#         self.yeet_pos = self.yeet.get_rect()
+#         #self.yeet_pos = pygame.rect.Rect((0,0,0,0))
+#         self.skeet = pygame.image.load("skeet.png")
+#         self.img = pygame.image.load("blorenge.png")
+#         pygame.display.set_icon(self.img) #sets an icon for the window
+#         self.screen = pygame.display.set_mode((1000,1000))
+#         pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+#         self.screen.blit(self.yeet, (500,500))
+#         self.running = True
+#     def yeet_left(self):  #will change to cover both later. trying Yeet first
+#         yeet_pos = self.yeet.get_rect()
+#         self.screen.blit(self.yeet, (yeet_pos[0]-50, yeet_pos[1]))
+#     def yeet_right(self, yeet_pos):
+#         #yeet_pos = self.yeet.get_rect()
+#         self.screen.blit(self.yeet, (self.yeet_pos[0]+50, self.yeet_pos[1]))
+#         print(self.yeet.get_rect()
+#     def start(self):
+#         while self.running:
+#             self.screen.blit(self.img, (500,500)) #replace img with an image the size of the screen to serve as background
+#             #self.screen.blit(self.yeet, (50, 870))
+#             #self.screen.blit(self.skeet, (870, 870))
+#             for event in pygame.event.get():
+#                 if event.type == pygame.QUIT:
+#                     self.running = False
+#                 if event.type == pygame.KEYDOWN:
+#                     if event.key == pygame.K_LEFT:
+#                         #yeet_pos = self.yeet.get_rect()
+#                         self.yeet_left()
+#                     if event.key == pygame.K_RIGHT: 
+#                         yeet_pos = self.yeet.get_rect()
+#                         #print()
+#                         #self.yeet_right(self.yeet_pos)
+#             self.screen.blit(self.img, (500,500))
+#             #self.draw_yee()
+#             pygame.display.update() 
