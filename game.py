@@ -78,6 +78,7 @@ class Game():
                 yeet_x -= move_x
             if keys[pygame.K_UP]: # jump
                 yeet_y -= move_y
+                self.yeet.time.wait(100000)
                 yeet_y += move_y
                         
             self.screen.fill((0,0,0))
