@@ -55,8 +55,8 @@ class Game():
     def start(self):
         yeet_x = 50
         yeet_y = 870
-        move = 7 #speed of how many pixels it moves
-        jmove = 50
+        move_x = 7 #speed of how many pixels it moves
+        move_y = 7
         self.screen.blit(self.yeet, (yeet_x,yeet_y))
         while self.running:
             #self.screen.blit(self.img,(500,500)) #replace img with an image the size
@@ -71,15 +71,14 @@ class Game():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_UP:
-                        yeet_y -= jmove
-
             keys = pygame.key.get_pressed()
-            if keys[pygame.K_RIGHT]:
-                yeet_x += move
-            if keys[pygame.K_LEFT]:
-                yeet_x -= move
+            if keys[pygame.K_RIGHT]: # move right
+                yeet_x += move_x
+            if keys[pygame.K_LEFT]: # move left
+                yeet_x -= move_x
+            if keys[pygame.K_UP]: # jump
+                yeet_y -= move_y
+                yeet_y += move_y
                         
             self.screen.fill((0,0,0))
             self.screen.blit(self.img,(500,500))
