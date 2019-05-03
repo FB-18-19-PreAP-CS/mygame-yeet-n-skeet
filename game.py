@@ -18,10 +18,10 @@ from random import randint
 num = randint(1,2)
 if num == 1:
     pygame.init()
-    yeet = pygame.image.load("yeet.png")
-    Skeet = pygame.image.load("skeet.png")
-    Dave = pygame.image.load('Dave .png')
-    img = pygame.image.load("blorenge.png")
+    yeet = pygame.image.load("yeet transparent.png")
+    Skeet = pygame.image.load("skeet transparent.png")
+    Dave = pygame.image.load('Dave transparent.png')
+    img = pygame.image.load("level 1 wip.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
     screen = pygame.display.set_mode((1000,1000))
@@ -57,9 +57,9 @@ if num == 1:
         pygame.display.update()
 elif num == 2:
     pygame.init()
-    yeet = pygame.image.load("yeet.png")
-    Skeet = pygame.image.load("skeet.png")
-    Dave = pygame.image.load('Dave .png')
+    yeet = pygame.image.load("yeet transparent.png")
+    Skeet = pygame.image.load("skeet transparent.png")
+    Dave = pygame.image.load('Dave transparent.png')
     img = pygame.image.load("blorenge.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
