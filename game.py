@@ -42,6 +42,14 @@ if num == 1:
             if event.type == pygame.QUIT:
                 running = False
         keys = pygame.key.get_pressed()
+        
+        #temp yeet controls
+        if keys[pygame.K_DOWN]:
+            yeet_y += move
+        if keys[pygame.K_UP]:
+            yeet_y -= move
+        
+        
         if keys[pygame.K_RIGHT]:
             yeet_x +=move
         if keys[pygame.K_LEFT]:
@@ -50,6 +58,16 @@ if num == 1:
             Skeet_x -= move
         if keys[pygame.K_d]:
             Skeet_x += move
+            
+        if yeet_x <= 0:
+            yeet_x += move
+        if Skeet_x <= 0:
+            Skeet_x += move
+        if yeet_x >= 930:
+            yeet_x -= move
+        if Skeet_x >= 930:
+            Skeet_x -= move
+        
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
@@ -81,6 +99,13 @@ elif num == 2:
             if event.type == pygame.QUIT:
                 running = False
         keys = pygame.key.get_pressed()
+        
+        #temp yeet controls
+        if keys[pygame.K_DOWN]:
+            yeet_y += move
+        if keys[pygame.K_UP]:
+            yeet_y -= move
+        
         if keys[pygame.K_RIGHT]:
             yeet_x +=move
         if keys[pygame.K_LEFT]:
@@ -89,6 +114,17 @@ elif num == 2:
             Skeet_x -= move
         if keys[pygame.K_d]:
             Skeet_x += move
+            
+        if yeet_x <= 0:
+            yeet_x += move
+        if Skeet_x <= 0:
+            Skeet_x += move
+        if yeet_x >= 930:
+            yeet_x -= move
+        if Skeet_x >= 930:
+            Skeet_x -= move
+        
+        
         screen.blit(img, (1,1))
         screen.blit(Dave, (50,10))
         screen.blit(yeet, (yeet_x,yeet_y))
