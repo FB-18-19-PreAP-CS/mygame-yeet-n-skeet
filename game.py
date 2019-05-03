@@ -114,16 +114,24 @@ elif num == 2:
         if keys[pygame.K_d]:
             Skeet_x += move
             
-        if yeet_x <= 0:
+
+        #boundaries
+        if yeet_x <= -10:
             yeet_x += move
-        if Skeet_x <= 0:
+        if Skeet_x <= -10:
             Skeet_x += move
-            
+        if yeet_x >= 930:
+            yeet_x -= move
+        if Skeet_x >= 930:
+            Skeet_x -= move
+        if yeet_y <= 0:
+            yeet_y -= move
         if yeet_y >= 900:
             yeet_y -= move
+        if Skeet_y <= 0:
+            Skeet_y += move
         if Skeet_y >= 900:
             Skeet_y -= move
-        
         
         screen.blit(img, (1,1))
         screen.blit(Dave, (50,10))
