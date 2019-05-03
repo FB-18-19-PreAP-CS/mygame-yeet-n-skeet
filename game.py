@@ -56,10 +56,10 @@ if num == 1:
             yeet_x += move
         if Skeet_x <= 0:
             Skeet_x += move
-        if yeet_x >= 930:
-            yeet_x -= move
-        if Skeet_x >= 930:
-            Skeet_x -= move
+        if yeet_y >= 930:
+            yeet_y -= move
+        if Skeet_y >= 930:
+            Skeet_y -= move
         
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
@@ -118,10 +118,11 @@ elif num == 2:
             yeet_x += move
         if Skeet_x <= 0:
             Skeet_x += move
-        if yeet_x >= 930:
-            yeet_x -= move
-        if Skeet_x >= 930:
-            Skeet_x -= move
+            
+        if yeet_y >= 900:
+            yeet_y -= move
+        if Skeet_y >= 900:
+            Skeet_y -= move
         
         
         screen.blit(img, (1,1))
