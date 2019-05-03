@@ -4,15 +4,13 @@ import itertools
 from pygame.sprite import Sprite
 from random import randint
 
-# def border(yeet_x, yeet_y, Skeet_x, Skeet_y):
-#     if yeet_x = 0:
-#         yeet_x -= 5
-
-#      screen.blit(yeet, (yeet_x,yeet_y))
-#         screen.blit(Skeet, (Skeet_x,Skeet_y))
-
-
 num = randint(1,2)
+
+
+
+num = 1
+
+
 if num == 1:
     pygame.init()
     yeet = pygame.image.load("yeet.png")
@@ -38,18 +36,39 @@ if num == 1:
             yeet_x +=move
         if keys[pygame.K_LEFT]:
             yeet_x -= move
+
+
+
+        #DELETE TEMP 
+        if keys[pygame.K_DOWN]:
+            yeet_y += move
+        if keys[pygame.K_UP]:
+            yeet_y -= move
+
+
         if keys[pygame.K_a]:
             Skeet_x -= move
         if keys[pygame.K_d]:
             Skeet_x += move
-        if yeet_x <= 0:
+
+        #boundaries
+        if yeet_x <= -10:
             yeet_x += move
-        if Skeet_x <= 0:
+        if Skeet_x <= -10:
             Skeet_x += move
         if yeet_x >= 930:
             yeet_x -= move
         if Skeet_x >= 930:
             Skeet_x -= move
+        if yeet_y <= 0:
+            yeet_y += move
+        if yeet_y >= 900:
+            yeet_y -= move
+        if Skeet_y <= 0:
+            Skeet_y += move
+        if Skeet_y >= 900:
+            Skeet_y -= move
+
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
@@ -69,8 +88,8 @@ elif num == 2:
     yeet_x = 10
     yeet_y = 905
     move = 5
-    Skeet_x =879
-    Skeet_y =905     
+    Skeet_x = 879
+    Skeet_y = 905     
     running = True
     while running:
         for event in pygame.event.get():
