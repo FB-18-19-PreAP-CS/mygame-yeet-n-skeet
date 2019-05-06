@@ -20,7 +20,7 @@ import time
 class Game():
     def __init__(self):
         pygame.init()
-        self.yeet = pygame.image.load("yeet.png")
+        self.yeet = pygame.image.load("yeet.png") #size 75 pix
         #self.yeet.set_colorkey((255,255,255))
         #self.yeet_pos = (x,y) 
 
@@ -31,7 +31,7 @@ class Game():
         self.img = pygame.image.load("blorenge.png")
         pygame.display.set_icon(self.img) #sets an icon for the window
 
-        self.screen = pygame.display.set_mode((1000,1000))
+        self.screen = pygame.display.set_mode((870,870)) ###################### 1000,1000
         pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
         
         self.screen.blit(self.yeet, (500,500))
@@ -50,24 +50,23 @@ class Game():
     #     yeet_pos = self.yeet.get_rect()
     #     self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]-50))
     #     self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]+50))
+    def updates(self):
+        self.screen.fill((0,0,0))
+        self.screen.blit(self.img,(0,0))
+        self.screen.blit(self.yeet, (yeet_x,yeet_y))
+        pygame.display.update()
         
 
     def start(self):
-        yeet_x = 50
-        yeet_y = 870
-        move_x = 7 #speed of how many pixels it moves
-        move_y = 7
+        yeet_x = 500 #50
+        yeet_y = 500 #870
+        move_x = 10 
+        move_y = 5
         self.screen.blit(self.yeet, (yeet_x,yeet_y))
+        clock = pygame.time.Clock()
         while self.running:
-            #self.screen.blit(self.img,(500,500)) #replace img with an image the size
-                                    #of the screen to serve as background
-
-            #self.yeet_left()
-            
-            #
-            # self.screen.blit(self.yeet, (50, 870))
-
-            #self.screen.blit(self.skeet, (870, 870))
+            dt = clock.tick(30)
+            speed = 1 / float(dt)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
@@ -77,14 +76,11 @@ class Game():
             if keys[pygame.K_LEFT]: # move left
                 yeet_x -= move_x
             if keys[pygame.K_UP]: # jump
-                yeet_y -= move_y
-                self.yeet.time.wait(100000)
-                yeet_y += move_y
-                        
-            self.screen.fill((0,0,0))
-            self.screen.blit(self.img,(500,500))
-            self.screen.blit(self.yeet, (yeet_x,yeet_y))
-            pygame.display.update()
+                yeet_y *= move_y * speed
+                
+                yeet_y /= move_y * speed
+
+            self.updates()
 
 
 def main():
