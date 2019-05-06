@@ -15,7 +15,7 @@ from random import randint
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
 
-num = randint(1,2)
+num = 1#randint(1,2)
 if num == 1:
     pygame.init()
     yeet = pygame.image.load("yeet transparent.png")
@@ -63,14 +63,35 @@ if num == 1:
         if keys[pygame.K_d]:
             Skeet_x += move
             
-        if yeet_x <= 0:
+        if yeet_x <= -10:
             yeet_x += move
-        if Skeet_x <= 0:
+        if Skeet_x <= -10:
             Skeet_x += move
+
         if yeet_x >= 930:
-            yeet_x -= move
-        if Skeet_x >= 930:
+            yeet_x -=move
+        if Skeet_x >= 930:    ##having trouble with Skeet right barrier
             Skeet_x -= move
+
+        if yeet_y >= 900:
+            yeet_y -= move
+        if Skeet_y >= 900:
+            Skeet_y -= move
+
+        if yeet_y <=0:
+            yeet_y+= move
+        if Skeet_y <= 0:
+            Skeet_y -=move
+
+         ### tree border  
+        if yeet_x == 400 and yeet_y >= 650: 
+            yeet_x -= move 
+        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=650:
+            Skeet_x +=move
+         
+            
+       
+
         
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
@@ -82,7 +103,7 @@ elif num == 2:
     yeet = pygame.image.load("yeet transparent.png")
     Skeet = pygame.image.load("skeet transparent.png")
     Dave = pygame.image.load('Dave transparent.png')
-    img = pygame.image.load("blorenge.png")
+    img = pygame.image.load("blorenge background.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
     screen = pygame.display.set_mode((1000,1000))
