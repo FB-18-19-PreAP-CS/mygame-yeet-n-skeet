@@ -41,6 +41,11 @@ if num == 1:
             yeet_y += move
         if keys[pygame.K_UP]:
             yeet_y -= move
+        if keys[pygame.K_s]:
+            Skeet_y += move
+        if keys[pygame.K_w]:
+            Skeet_y -= move
+        
         
         
         if keys[pygame.K_RIGHT]:
@@ -52,15 +57,31 @@ if num == 1:
         if keys[pygame.K_d]:
             Skeet_x += move
             
-        if yeet_x <= 0:
+        if yeet_x <= -10:
             yeet_x += move
-        if Skeet_x <= 0:
+        if Skeet_x <= -10:
             Skeet_x += move
-        if yeet_y >= 930:
+            
+        if yeet_x >= 930:
+            yeet_x -= move
+        if Skeet_x >= 930:
+            Skeet_x -= move
+            
+        if yeet_y <= 0:
+            yeet_y += move
+        if yeet_y >= 900:
             yeet_y -= move
-        if Skeet_y >= 930:
+        if Skeet_y <= 0:
+            Skeet_y += move
+        if Skeet_y >= 900:
             Skeet_y -= move
-        
+
+        if yeet_y == 10: 
+            pass
+        if yeet_x >= 200 and yeet_x <= 500:
+            print('ree')
+
+
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
@@ -120,19 +141,20 @@ elif num == 2:
             yeet_x += move
         if Skeet_x <= -10:
             Skeet_x += move
+            
         if yeet_x >= 930:
             yeet_x -= move
         if Skeet_x >= 930:
             Skeet_x -= move
+            
         if yeet_y <= 0:
-            yeet_y -= move
+            yeet_y += move
         if yeet_y >= 900:
             yeet_y -= move
         if Skeet_y <= 0:
             Skeet_y += move
         if Skeet_y >= 900:
             Skeet_y -= move
-        
         screen.blit(img, (1,1))
         screen.blit(Dave, (50,10))
         screen.blit(yeet, (yeet_x,yeet_y))
