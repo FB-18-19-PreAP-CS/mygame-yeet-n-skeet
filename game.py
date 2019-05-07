@@ -2,8 +2,11 @@ import pygame, sys
 from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
-import time
-
+from random import randint
+vec = pygame.math.Vector2
+#class Game():
+    # def __init__():
+    #     pygame.init()
 # class Avatar(pygame.sprite.Sprite):
 #     def __init__(self, width, height):
 #         pygame.sprite.Sprite.__init__(self)
@@ -12,124 +15,321 @@ import time
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
 
+num = 1#randint(1,2)
+if num == 1:
+    pygame.init()
+    yeet = pygame.image.load("yeet transparent.png")
+    Skeet = pygame.image.load("skeet transparent.png")
+    Dave = pygame.image.load('Dave transparent.png')
+    img = pygame.image.load("level 1 wip.png")
+    pygame.display.set_icon(img) #sets an icon for the window
 
-# def move_left(x,y):
-#     x -= 100
-#     return x
+    screen = pygame.display.set_mode((1000,1000))
+    pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
-class Game():
-    def __init__(self):
-        pygame.init()
-        self.yeet = pygame.image.load("yeet.png") #size 75 pix
-        #self.yeet.set_colorkey((255,255,255))
-        #self.yeet_pos = (x,y) 
+    move = 5
+    yeet_x = 10
+    yeet_y = 905
+    yeet_pos = vec(10, 905)
+    yeet_vel = vec(0,0)
+    skeet_vel = vec(0,0)
+    Skeet_x =879
+    Skeet_y =905 
+    skeet_pos = vec(875,905)
+            
+            
+    running = True
 
-        self.skeet = pygame.image.load("skeet.png")
-        #self.skeet.set_colorkey((255,255,255))
-        #self.skeet_pos = (870, 870)
-
-        self.img = pygame.image.load("blorenge.png")
-        pygame.display.set_icon(self.img) #sets an icon for the window
-
-        self.screen = pygame.display.set_mode((870,870)) ###################### 1000,1000
-        pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+    #def yeet_jump():
         
-        self.screen.blit(self.yeet, (500,500))
+            
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    yeet_pos.y -= 20
+        keys = pygame.key.get_pressed()
 
-        self.running = True
 
-    # def yeet_left(self):  #will change to cover both later. trying Yeet first
-    #     yeet_pos = self.yeet.get_rect()
-    #     self.screen.blit(self.yeet, (yeet_pos[0]-50, yeet_pos[1]))
-
-    # def yeet_right(self):
-    #     yeet_pos = self.yeet.get_rect()
-    #     self.screen.blit(self.yeet, (yeet_pos[0]+50, yeet_pos[1]))
-
-    # def yeet_jump(self):
-    #     yeet_pos = self.yeet.get_rect()
-    #     self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]-50))
-    #     self.screen.blit(self.yeet, (yeet_pos[0], yeet_pos[1]+50))
-    def updates(self):
-        self.screen.fill((0,0,0))
-        self.screen.blit(self.img,(0,0))
-        self.screen.blit(self.yeet, (yeet_x,yeet_y))
-        pygame.display.update()
-        
-
-    def start(self):
-        yeet_x = 500 #50
-        yeet_y = 500 #870
-        move_x = 10 
-        move_y = 5
-        self.screen.blit(self.yeet, (yeet_x,yeet_y))
-        clock = pygame.time.Clock()
-        while self.running:
-            dt = clock.tick(30)
-            speed = 1 / float(dt)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    run = False
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_RIGHT]: # move right
-                yeet_x += move_x
-            if keys[pygame.K_LEFT]: # move left
-                yeet_x -= move_x
-            if keys[pygame.K_UP]: # jump
-                yeet_y *= move_y * speed
+        # def start(self):
+        # yeet_x = 500 #50
+        # yeet_y = 500 #870
+        # move_x = 10 
+        # move_y = 5
+        # self.screen.blit(self.yeet, (yeet_x,yeet_y))
+        # clock = pygame.time.Clock()
+        # while self.running:
+        #     dt = clock.tick(30)
+        #     speed = 1 / float(dt)
+        #     for event in pygame.event.get():
+        #         if event.type == pygame.QUIT:
+        #             run = False
+        #     keys = pygame.key.get_pressed()
+        #     if keys[pygame.K_RIGHT]: # move right
+        #         yeet_x += move_x
+        #     if keys[pygame.K_LEFT]: # move left
+        #         yeet_x -= move_x
+        #     if keys[pygame.K_UP]: # jump
+        #         yeet_y *= move_y * speed
                 
-                yeet_y /= move_y * speed
+        #         yeet_y /= move_y * speed
 
-            self.updates()
+        #     self.updates()
+
+        
+        #temp yeet controls
+        # if keys[pygame.K_DOWN]:
+        #     yeet_y += move
+        # if keys[pygame.K_UP]:
+        #     yeet_y -= move
+        
+        if keys[pygame.K_s]:
+            Skeet_y += move
+        if keys[pygame.K_w]:
+            Skeet_y -= move
+        #######
+        if keys[pygame.K_RIGHT]:
+            yeet_x +=move
+        if keys[pygame.K_LEFT]:
+            yeet_x -= move
+        if keys[pygame.K_a]:
+            Skeet_x -= move
+        if keys[pygame.K_d]:
+            Skeet_x += move
+            
+        if yeet_x <= -10:
+            yeet_x += move
+        if Skeet_x <= -10:
+            Skeet_x += move
+
+        if yeet_x >= 930:
+            yeet_x -=move
+        if Skeet_x >= 930:    ##having trouble with Skeet right barrier
+            Skeet_x -= move
+
+        if yeet_y >= 900:
+            yeet_y -= move
+        if Skeet_y >= 900:
+            Skeet_y -= move
+
+        if yeet_y <=0:
+            yeet_y+= move
+        if Skeet_y <= 0:
+            Skeet_y -=move
+
+         ### tree border  
+        if yeet_x == 400 and yeet_y >= 650: 
+            yeet_x -= move 
+        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=650:
+            Skeet_x +=move
+         
+            
+       
+
+        
+        screen.blit(img, (1,1))
+        screen.blit(Dave, (450,10))
+        screen.blit(yeet, (yeet_pos,yeet_pos))
+        screen.blit(Skeet, (Skeet_x,Skeet_y))
+        pygame.display.update()
+elif num == 2:
+    pygame.init()
+    yeet = pygame.image.load("yeet transparent.png")
+    Skeet = pygame.image.load("skeet transparent.png")
+    Dave = pygame.image.load('Dave transparent.png')
+    img = pygame.image.load("blorenge background.png")
+    pygame.display.set_icon(img) #sets an icon for the window
+
+    screen = pygame.display.set_mode((1000,1000))
+    pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+
+    yeet_x = 10
+    yeet_y = 905
+    move = 5
+    Skeet_x =879
+    Skeet_y =905   
+        
+        
+    running = True
+    
+        
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        keys = pygame.key.get_pressed()
+        
+        #temp yeet controls
+        if keys[pygame.K_s]:
+            Skeet_y += move
+        if keys[pygame.K_w]:
+            Skeet_y -= move
+
+        if keys[pygame.K_DOWN]:
+            yeet_y += move
+        if keys[pygame.K_UP]:
+            yeet_y -= move
+        
+        if keys[pygame.K_RIGHT]:
+            yeet_x +=move
+        if keys[pygame.K_LEFT]:
+            yeet_x -= move
+        if keys[pygame.K_a]:
+            Skeet_x -= move
+        if keys[pygame.K_d]:
+            Skeet_x += move
+            
+        if yeet_x <= 0:
+            yeet_x += move
+        if Skeet_x <= 0:
+            Skeet_x += move
+        if yeet_x >= 930:
+            yeet_x -= move
+        if Skeet_x >= 930:
+            Skeet_x -= move
+        
+        
+        screen.blit(img, (1,1))
+        screen.blit(Dave, (50,10))
+        screen.blit(yeet, (yeet_x,yeet_y))
+        screen.blit(Skeet, (Skeet_x,Skeet_y))
+        pygame.display.update()
 
 
-def main():
-    g = Game()
-    #g.yeet_left()
-    g.start()
 
-if __name__ == "__main__":
-    main()
+# pygame.init()
+# yeet = pygame.image.load("yeet.png")
+# Skeet = pygame.image.load("skeet.png")
+# Dave = pygame.image.load('Dave .png')
+# img = pygame.image.load("blorenge.png")
+# pygame.display.set_icon(img) #sets an icon for the window
+
+# screen = pygame.display.set_mode((1000,1000))
+# pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+
+# yeet_x = 10
+# yeet_y = 905
+# move = 5
+# Skeet_x =879
+# Skeet_y =905   
+        
+        
+# running = True
+    
+        
+# while running:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             running = False
+#     keys = pygame.key.get_pressed()
+#     if keys[pygame.K_RIGHT]:
+#         yeet_x +=move
+#     if keys[pygame.K_LEFT]:
+#         yeet_x -= move
+#     if keys[pygame.K_a]:
+#         Skeet_x -= move
+#     if keys[pygame.K_d]:
+#         Skeet_x += move
+#     screen.blit(img, (1,1))
+#     screen.blit(Dave, (450,10))
+#     screen.blit(yeet, (yeet_x,yeet_y))
+#     screen.blit(Skeet, (Skeet_x,Skeet_y))
+#     pygame.display.update()
 
 
 
-# class Yeet(pygame.sprite.Sprite):
-#     def __init__(self, color = (0,0,0), width = 100, hieght = 100):
-#         pygame.sprite.Sprite.__init__(self)
 
-#         self.image = pygame.image.load("yeet.png")
 
-#         self.rect = self.image.get_rect()
 
-#     def set_pos(self, x, y):
-#         self.rect.x = x
-#         self.rect.y = y
+
+
+
+
+
+
+
 
 # class Game():
 #     def __init__(self):
 #         pygame.init()
-#         self.Avatar = pygame.image.load("yeet.png")
+#         self.yeet = pygame.image.load("yeet.png")
+#         self.Skeet = pygame.image.load("skeet.png")
+#         self.Dave = pygame.image.load('Dave .png')
 #         self.img = pygame.image.load("blorenge.png")
 #         pygame.display.set_icon(self.img) #sets an icon for the window
-#         self.player = Yeet()
-#         self.all_sprites = pygame.sprite.Group()
 
 #         self.screen = pygame.display.set_mode((1000,1000))
 #         pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+
+        
+        
         
 #         running = True
     
         
 #         while running:
-#             self.screen.blit(self.all_sprites)
-#             #self.screen.blit(self.Avatar, (500,500)) #replace img with an image the size
+#             self.screen.blit(self.img, (500,500)) #replace img with an image the size
 #                                     #of the screen to serve as background
-#             for event in pygame.event.get():
-#                 if event.type == pygame.QUIT:
-#                     running = False
+#             self.screen.blit(self.yeet, (10, 870))
+#             self.screen.blit(self.Skeet, (879, 870))
+#             self.screen.blit(self.Dave, (450, 10))
+#             # for event in pygame.event.get():
+#             #     if event.type == pygame.QUIT:
+#             #         running = False
 
 #             pygame.display.update() 
 
-# Game()
 
-#https://dr0id.bitbucket.io/legacy/pygame_tutorial01.html
+    # def skeet_left(self):
+    #     skeet_posx = 879
+    #     skeet_posy = 870
+    #     step_skeetx = 10
+    #     step_skeety = 10
+    #     if skeet_posx>screen_width-64 or skeet_posx<0:
+    #         step_skeetx = -step_skeetx
+    #     if skeet_posy>screen_height-64 or skeet_posy<0:
+    #         step_skeety = -step_skeety
+
+    #     skeet_posx += step_skeetx
+    #     skeet_posy += step_skeety
+            
+        # def start(self):
+        #     while self.running:
+        #         self.screen.blit(self.img, (500,500)) #replace img with an image the size of the screen to serve as background
+            
+            
+        #     #self.yeet_left()
+            
+        #     #self.screen.blit(self.yeet, (50, 870))
+
+        #     #self.screen.blit(self.skeet, (870, 870))
+        #         for event in pygame.event.get():
+        #             if event.type == pygame.QUIT:
+        #                 self.running = False
+
+        #             if event.type == pygame.KEYDOWN:
+        #                 if event.key == pygame.K_A:
+        #                     pass
+        #                 if event.key == pygame.K_D:
+        #                     self.skeet_right()
+
+
+
+
+
+# blit(avatar(x,y))
+
+
+# class yeet(Sprite):
+
+#    def __init__(self, screen, img_filename, init_pos, init_dir, speed):
+#        Sprite.__init__(self)
+
+#        self.image = pygame.Surface([width, height])
+#        self.image.fill(color)
+
+#        self.rect = self.image.get_rect()
+#        self.char_img = pygame.image.load("Copy of yeet.jpg")
+#        self.image = self.char_img
