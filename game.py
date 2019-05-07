@@ -41,6 +41,8 @@ if num == 1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                print(pygame.mouse.get_pos())
         keys = pygame.key.get_pressed()
         
         #temp yeet controls
@@ -84,14 +86,23 @@ if num == 1:
             Skeet_y -=move
 
          ### tree border  
-        if yeet_x == 400 and yeet_y >= 650: 
+        if yeet_x == 400 and yeet_y >= 625: 
             yeet_x -= move 
-        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=650:
+        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=625:
             Skeet_x +=move
-         
-            
-       
-
+           
+        if Skeet_x >= 400 and Skeet_x<=450 and Skeet_y >= 625: 
+            Skeet_x -= move 
+        if yeet_x <= 550 and yeet_x >= 500 and yeet_y >=630:
+            yeet_x +=move
+        #top tree border
+        if yeet_y == 625 and yeet_x >= 400 and yeet_x <=550:
+            yeet_y -= move
+        if Skeet_y == 625 and Skeet_x >= 400 and Skeet_x <=550:
+            Skeet_y -= move
+        #leaf tree border
+        # if yeet_y == 771 and yeet_x >=306 and yeet_x <=701:
+        #     yeet_y -= move
         
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
