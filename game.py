@@ -34,6 +34,9 @@ if num == 1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                print(pygame.mouse.get_pos())
         keys = pygame.key.get_pressed()
         
         #temp yeet controls
@@ -76,10 +79,29 @@ if num == 1:
         if Skeet_y >= 900:
             Skeet_y -= move
 
-        if yeet_y == 10: 
-            pass
-        if yeet_x >= 200 and yeet_x <= 500:
-            print('ree')
+        #top middle
+        if yeet_x >= 350 and yeet_x <= 475:
+            if yeet_y <= 200 and yeet_y >= 125:
+                yeet_y -= move
+        if yeet_x >= 350 and yeet_x <= 475:
+            if yeet_y <= 250 and yeet_y >= 200:
+                yeet_y += move
+
+        if Skeet_x >= 350 and Skeet_x <= 475:
+            if Skeet_y <= 200 and Skeet_y >= 125:
+                Skeet_y -= move
+        if Skeet_x >= 350 and Skeet_x <= 475:
+            if Skeet_y <= 250 and Skeet_y >= 200:
+                Skeet_y += move
+            
+        #middle
+        if yeet_x >= 406 and yeet_x <= 600:
+            if yeet_y <= 480 and yeet_y >= 435:
+                yeet_y -= move
+        if yeet_x >= 400 and yeet_x <= 593:
+            if yeet_y <= 580 and yeet_y >= 435:
+                yeet_y += move
+    
 
 
         screen.blit(img, (1,1))
