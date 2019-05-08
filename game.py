@@ -31,13 +31,16 @@ if num == 1:
     yeet_x = 10
     yeet_y = 905
     yeet_pos = vec(10, 905)
-    yeet_vel = vec(0,0)
-    skeet_vel = vec(0,0)
+    # yeet_vel = vec(0,0)
+    # yeet_acc = vec(0,0)
+
+    
     Skeet_x =879
     Skeet_y =905 
     skeet_pos = vec(875,905)
-            
-            
+    # skeet_vel = vec(0,905)
+    # skeet_acc = vec(875,0)
+
     running = True
 
     #def yeet_jump():
@@ -49,7 +52,9 @@ if num == 1:
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    yeet_pos.y -= 20
+                    yeet_y -= 200
+            if event.type == pygame.KEYUP:
+                    yeet_y += 200
         keys = pygame.key.get_pressed()
 
 
@@ -85,10 +90,10 @@ if num == 1:
         # if keys[pygame.K_UP]:
         #     yeet_y -= move
         
-        if keys[pygame.K_s]:
-            Skeet_y += move
-        if keys[pygame.K_w]:
-            Skeet_y -= move
+        # if keys[pygame.K_s]:
+        #     Skeet_y += move
+        # if keys[pygame.K_w]:
+        #     Skeet_y -= move
         #######
         if keys[pygame.K_RIGHT]:
             yeet_x +=move
@@ -124,16 +129,16 @@ if num == 1:
             yeet_x -= move 
         if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=650:
             Skeet_x +=move
-         
             
        
 
         
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
-        screen.blit(yeet, (yeet_pos,yeet_pos))
+        screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
         pygame.display.update()
+
 elif num == 2:
     pygame.init()
     yeet = pygame.image.load("yeet transparent.png")
