@@ -112,8 +112,8 @@ if num == 1:
         if yeet_y == 600 and yeet_x <=213:
             yeet_y -= move
 
-        if yeet_y ==618 and yeet_x <=120:
-            yeet_y -= move
+        # if yeet_y ==618 and yeet_x <=120:
+        #     yeet_y -= move
 
 
 
