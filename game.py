@@ -101,9 +101,22 @@ if num == 1:
         if Skeet_y == 625 and Skeet_x >= 400 and Skeet_x <=550:
             Skeet_y -= move
         #leaf tree border
-        # if yeet_y == 771 and yeet_x >=306 and yeet_x <=701:
+        if yeet_y ==680 and yeet_x >= 280 and yeet_x <= 680:
+            yeet_y -= move
+        if Skeet_y ==680 and Skeet_x >= 280 and Skeet_x <= 680:
+            Skeet_y -= move
+        ##bottom of leaves
+        # if yeet_y >= 833 and yeet_x >=375 and yeet_x <= 680:
         #     yeet_y -= move
-        
+
+        if yeet_y == 600 and yeet_x <=213:
+            yeet_y -= move
+
+        if yeet_y ==618 and yeet_x <=120:
+            yeet_y -= move
+
+
+
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
