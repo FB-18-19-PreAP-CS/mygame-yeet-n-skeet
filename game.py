@@ -106,16 +106,47 @@ if num == 1:
         if Skeet_y ==680 and Skeet_x >= 280 and Skeet_x <= 680:
             Skeet_y -= move
         ##bottom of leaves
-        # if yeet_y >= 833 and yeet_x >=375 and yeet_x <= 680:
-        #     yeet_y -= move
-
+        if yeet_y == 830 and yeet_x >= 285 and yeet_x <= 655:
+            yeet_y += move
+        ##Trunks left side
         if yeet_y == 600 and yeet_x <=213:
             yeet_y -= move
 
-        # if yeet_y ==618 and yeet_x <=120:
-        #     yeet_y -= move
+        if yeet_y == 520 and yeet_x <= 90:
+            yeet_y -= move
+        
+        if yeet_y == 755 and yeet_x <= 170:
+            yeet_y += move
 
+        if yeet_y == 360 and yeet_x <= 5:
+            yeet_y -= move
+        
+        if yeet_y == 210 and yeet_x <= 45:
+            yeet_y += move
+        if yeet_y == 245 and yeet_x >= 45 and yeet_x <= 240:
+            yeet_y += move
+        if yeet_y == 115 and yeet_x <= 235:
+            yeet_y -= move
+        if yeet_y == 60 and yeet_x <= 100:
+            yeet_y -= move
+        
+        ##Trunks right side
+        if yeet_y == 745 and yeet_x >=775:
+            yeet_y += move
+        if yeet_y == 605 and yeet_x >=775:
+            yeet_y -= move
+        if yeet_y == 515 and yeet_x >= 845:
+            yeet_y -= move
+        if yeet_y == 355 and yeet_x >= 925:
+            yeet_y -= move
+        if yeet_y == 220 and yeet_x >=880:
+            yeet_y += move
+        if yeet_y == 260 and yeet_x >=655 and yeet_x <= 855:
+            yeet_y += move
+        if yeet_y == 125 and yeet_x >= 650:
+            yeet_y -= move
 
+        print(yeet_x, yeet_y)
 
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
