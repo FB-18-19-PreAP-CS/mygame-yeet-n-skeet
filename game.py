@@ -3,21 +3,14 @@ from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
 from random import randint
+clock = pygame.time.Clock()
 vec = pygame.math.Vector2
-#class Game():
-    # def __init__():
-    #     pygame.init()
-# class Avatar(pygame.sprite.Sprite):
-#     def __init__(self, width, height):
-#         pygame.sprite.Sprite.__init__(self)
-
-#         self.image = pygame.Surface([width, height])
-#         self.image.fill('white')
-#         self.rect = self.image.get_rect()
 
 num = 1#randint(1,2)
 if num == 1:
     pygame.init()
+    # pygame.mixer.music.load('rocketchip_zero_gravity_love.mp3') #music setup
+    # pygame.mixer.music.play(-1)
     yeet = pygame.image.load("yeet transparent.png")
     Skeet = pygame.image.load("skeet transparent.png")
     Dave = pygame.image.load('Dave transparent.png')
@@ -28,16 +21,15 @@ if num == 1:
     pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
     move = 5
-    yeet_x = 10
-    yeet_y = 905
-    yeet_pos = vec(10, 905)
+    yeet_x = 500 #10
+    yeet_y = 500 #905
+    #yeet_pos = vec(10, 905)
     # yeet_vel = vec(0,0)
     # yeet_acc = vec(0,0)
 
-    
-    Skeet_x =879
-    Skeet_y =905 
-    skeet_pos = vec(875,905)
+    Skeet_x = 530 #879
+    Skeet_y = 500 #905
+    #skeet_pos = vec(875,905)
     # skeet_vel = vec(0,905)
     # skeet_acc = vec(875,0)
 
@@ -49,12 +41,18 @@ if num == 1:
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                #pygame.mixer.music.stop() #stop music
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    yeet_y -= 200
+                    yeet_y -= 100
             if event.type == pygame.KEYUP:
-                    yeet_y += 200
+                yeet_y += 100
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    Skeet_y -= 100
+            if event.type == pygame.KEYUP:
+                Skeet_y += 100
         keys = pygame.key.get_pressed()
 
 
@@ -125,20 +123,82 @@ if num == 1:
             Skeet_y -=move
 
          ### tree border  
-        if yeet_x == 400 and yeet_y >= 650: 
+         ### tree border  
+        if yeet_x == 400 and yeet_y >= 625: 
             yeet_x -= move 
-        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=650:
+        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=625:
             Skeet_x +=move
-            
-       
+           
+        if Skeet_x >= 400 and Skeet_x<=450 and Skeet_y >= 625: 
+            Skeet_x -= move 
+        if yeet_x <= 550 and yeet_x >= 500 and yeet_y >=630:
+            yeet_x +=move
+        #top tree border
+        if yeet_y == 625 and yeet_x >= 400 and yeet_x <=550:
+            yeet_y -= move
+        if Skeet_y == 625 and Skeet_x >= 400 and Skeet_x <=550:
+            Skeet_y -= move
+        #leaf tree border
+        if yeet_y ==680 and yeet_x >= 280 and yeet_x <= 680:
+            yeet_y -= move
+        if Skeet_y ==680 and Skeet_x >= 280 and Skeet_x <= 680:
+            Skeet_y -= move
+        ##bottom of leaves
+        # if yeet_y >= 833 and yeet_x >=375 and yeet_x <= 680:
+        #     yeet_y -= move
 
-        
+        if yeet_y == 600 and yeet_x <=213:
+            yeet_y -= move
+
+        # if yeet_y ==618 and yeet_x <=120:
+        #     yeet_y -= move
+
+        #top middle
+        if yeet_x >= 350 and yeet_x <= 475:
+            if yeet_y <= 200 and yeet_y >= 125:
+                yeet_y -= move
+        if yeet_x >= 350 and yeet_x <= 475:
+            if yeet_y <= 250 and yeet_y >= 200:
+                yeet_y += move
+
+        if Skeet_x >= 350 and Skeet_x <= 475:
+            if Skeet_y <= 200 and Skeet_y >= 125:
+                Skeet_y -= move
+        if Skeet_x >= 350 and Skeet_x <= 475:
+            if Skeet_y <= 250 and Skeet_y >= 200:
+                Skeet_y += move
+            
+        #middle
+        if yeet_x >= 350 and yeet_x <= 580:
+            if yeet_y <= 480 and yeet_y >= 435:
+                yeet_y -= move
+        if yeet_x >= 400 and yeet_x <= 593:
+            if yeet_y <= 580 and yeet_y >= 435:
+                yeet_y += move
+
+        #middle two 
+        if yeet_x >= 135 and yeet_x <= 384:
+            if yeet_y >= 408 and yeet_y <= 420:
+                yeet_y += move
+        if yeet_x >= 135 and yeet_x <= 384:
+            if yeet_y >= 272 and yeet_y <= 275:
+                yeet_y -= move
+
+        if yeet_x >= 605 and yeet_x <= 840:
+            if yeet_y >= 400 and yeet_y <= 405:
+                yeet_y += move
+        if yeet_x >= 605 and yeet_x <= 840:
+            if yeet_y >= 283 and yeet_y <= 285:
+                yeet_y -= move
+
+
+        print(yeet_x, yeet_y)
+
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
         pygame.display.update()
-
 elif num == 2:
     pygame.init()
     yeet = pygame.image.load("yeet transparent.png")
