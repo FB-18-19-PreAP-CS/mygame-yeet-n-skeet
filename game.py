@@ -2,6 +2,7 @@ import pygame, sys
 from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
+import pygame.sprite.Sprite as Sprite
 from random import randint
 clock = pygame.time.Clock()
 vec = pygame.math.Vector2
@@ -35,8 +36,14 @@ if num == 1:
 
     running = True
 
-    #def yeet_jump():
-        
+    def frames():
+        frames = []
+        for i in range(5):
+            frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
+        for i in range(5):
+            frames.append(frames[4-i]) # right, using same object twice
+        # this gives [0,1,2,3,4,4,3,2,1,0]
+
             
     while running:
         for event in pygame.event.get():
@@ -45,14 +52,14 @@ if num == 1:
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    yeet_y -= 350
+                    yeet_y -= 250
                 elif event.key == pygame.K_s:
-                    Skeet_y -= 350
+                    Skeet_y -= 250
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
-                    yeet_y += 350
+                    yeet_y += 250
                 elif event.key == pygame.K_s:
-                    Skeet_y += 350
+                    Skeet_y += 250
             
         keys = pygame.key.get_pressed()
 
