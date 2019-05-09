@@ -21,14 +21,14 @@ if num == 1:
     pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
     move = 5
-    yeet_x = 500 #10
-    yeet_y = 500 #905
+    yeet_x = 10
+    yeet_y = 905
     #yeet_pos = vec(10, 905)
     # yeet_vel = vec(0,0)
     # yeet_acc = vec(0,0)
 
-    Skeet_x = 530 #879
-    Skeet_y = 500 #905
+    Skeet_x = 879
+    Skeet_y = 905
     #skeet_pos = vec(875,905)
     # skeet_vel = vec(0,905)
     # skeet_acc = vec(875,0)
@@ -45,14 +45,15 @@ if num == 1:
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    yeet_y -= 100
+                    yeet_y -= 350
+                elif event.key == pygame.K_s:
+                    Skeet_y -= 350
             if event.type == pygame.KEYUP:
-                yeet_y += 100
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
-                    Skeet_y -= 100
-            if event.type == pygame.KEYUP:
-                Skeet_y += 100
+                if event.key == pygame.K_UP:
+                    yeet_y += 350
+                elif event.key == pygame.K_s:
+                    Skeet_y += 350
+            
         keys = pygame.key.get_pressed()
 
 
@@ -192,7 +193,7 @@ if num == 1:
                 yeet_y -= move
 
 
-        print(yeet_x, yeet_y)
+        #print(yeet_x, yeet_y)
 
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
