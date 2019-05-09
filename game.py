@@ -37,7 +37,7 @@ if num == 1:
                 running = False
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print(pygame.mouse.get_pos())
+                print(yeet_x, yeet_y)
                 
                 
         keys = pygame.key.get_pressed()
@@ -84,9 +84,16 @@ if num == 1:
         if yeet_x >= 350 and yeet_x <= 475:
             if yeet_y <= 200 and yeet_y >= 125:
                 yeet_y -= move
-        if yeet_x >= 350 and yeet_x <= 475:
+        if yeet_x >= 350 and yeet_x <= 490:
             if yeet_y <= 250 and yeet_y >= 200:
                 yeet_y += move
+
+        if yeet_x == 345: 
+            if yeet_y <= 255 and yeet_y >= 115:
+                yeet_x -= move
+        if yeet_x == 515:
+            if yeet_y <= 160 and yeet_y >= 115:
+                yeet_x += move
 
         if Skeet_x >= 350 and Skeet_x <= 475:
             if Skeet_y <= 200 and Skeet_y >= 125:
@@ -100,26 +107,46 @@ if num == 1:
             if yeet_y <= 480 and yeet_y >= 435:
                 yeet_y -= move
         if yeet_x >= 400 and yeet_x <= 593:
-            if yeet_y <= 580 and yeet_y >= 435:
+            if yeet_y <= 570 and yeet_y >= 565:
                 yeet_y += move
 
-        #middle two 
-        if yeet_x >= 135 and yeet_x <= 384:
-            if yeet_y >= 408 and yeet_y <= 420:
+        if yeet_x >= 235 and yeet_x <= 715:
+            if yeet_y == 465:
+                yeet_y -= move
+        if yeet_x >= 235 and yeet_x <= 595:
+            if yeet_y == 595:
                 yeet_y += move
-        if yeet_x >= 135 and yeet_x <= 384:
+        
+        # if yeet_x >= 350 and yeet_x <= 580:
+        #     if yeet_y <= 480 and yeet_y >= 435:
+        #         yeet_y -= move
+        if yeet_x >= 555 and yeet_x <= 715:
+            if yeet_y == 595:
+                yeet_y += move
+        
+
+        #middle two 
+        if yeet_x >= 85 and yeet_x <= 355:
+            if yeet_y == 420:
+                yeet_y += move
+        if yeet_x >= 85 and yeet_x <= 355:
             if yeet_y >= 272 and yeet_y <= 275:
                 yeet_y -= move
 
-        if yeet_x >= 605 and yeet_x <= 840:
-            if yeet_y >= 400 and yeet_y <= 405:
+        if yeet_x == 550:
+            if yeet_y >= 285 and yeet_y < 420:
+                yeet_x -= move
+        if yeet_x <= 825 and yeet_x >= 775:
+            if yeet_y >= 280 and yeet_y <= 330:
+                yeet_x += move
+
+        if yeet_x >= 560 and yeet_x <= 810:
+            if yeet_y == 420:
                 yeet_y += move
-        if yeet_x >= 605 and yeet_x <= 840:
+        if yeet_x >= 560 and yeet_x <= 810:
             if yeet_y >= 283 and yeet_y <= 285:
                 yeet_y -= move
 
-
-        print(yeet_x, yeet_y)
 
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
