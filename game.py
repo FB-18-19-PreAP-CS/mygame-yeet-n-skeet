@@ -85,7 +85,7 @@ if num == 1:
         if Skeet_y <= 0:
             Skeet_y -=move
 
-#def Skeet_borders_1():
+
 
          ### tree border  
         if yeet_x == 400 and yeet_y >= 625: 
