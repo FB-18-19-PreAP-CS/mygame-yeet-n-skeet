@@ -2,10 +2,30 @@ import pygame, sys
 from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
-import pygame.sprite.Sprite as Sprite
 from random import randint
 clock = pygame.time.Clock()
 vec = pygame.math.Vector2
+
+class Animation(Sprite):
+    def __init__(self.frames):
+        pygame.sprite.Sprite.__init__(self)
+        
+    def yeet_frames():
+        frames = []
+        for i in range(5):
+            frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
+        for i in range(5):
+            frames.append(frames[4-i]) # right, using same object twice
+        # this gives [0,1,2,3,4,4,3,2,1,0]
+
+    def skeet_frames():
+        frames = []
+        for i in range(5):
+            frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
+        for i in range(5):
+            frames.append(frames[4-i]) # right, using same object twice
+        # this gives [0,1,2,3,4,4,3,2,1,0]
+
 
 num = 1#randint(1,2)
 if num == 1:
@@ -35,15 +55,6 @@ if num == 1:
     # skeet_acc = vec(875,0)
 
     running = True
-
-    def frames():
-        frames = []
-        for i in range(5):
-            frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
-        for i in range(5):
-            frames.append(frames[4-i]) # right, using same object twice
-        # this gives [0,1,2,3,4,4,3,2,1,0]
-
             
     while running:
         for event in pygame.event.get():
