@@ -145,6 +145,56 @@ if num == 1:
             yeet_y += move
         if yeet_y == 125 and yeet_x >= 650:
             yeet_y -= move
+        if yeet_y == 80 and yeet_x >= 805:
+            yeet_y -= move
+        
+        #### SKEET BORDERS ######
+
+        ##bottom of leaves
+        if Skeet_y == 830 and Skeet_x >= 285 and Skeet_x <= 655:
+            Skeet_y += move
+        ##Trunks left side
+        if Skeet_y == 600 and Skeet_x <=213:
+            Skeet_y -= move
+
+        if Skeet_y == 520 and Skeet_x <= 90:
+            Skeet_y -= move
+        
+        if Skeet_y == 755 and Skeet_x <= 170:
+            Skeet_y += move
+
+        if Skeet_y == 360 and Skeet_x <= 5:
+            Skeet_y -= move
+        
+        if Skeet_y == 210 and Skeet_x <= 45:
+            Skeet_y += move
+        if Skeet_y == 245 and Skeet_x >= 45 and Skeet_x <= 240:
+            Skeet_y += move
+        if Skeet_y == 115 and Skeet_x <= 235:
+            Skeet_y -= move
+        if Skeet_y == 60 and Skeet_x <= 100:
+            Skeet_y -= move
+        
+        ##Trunks right side
+        if Skeet_y == 745 and Skeet_x >=775:
+            Skeet_y += move
+        if Skeet_y == 605 and Skeet_x >=775:
+            Skeet_y -= move
+        if Skeet_y == 515 and Skeet_x >= 845:
+            Skeet_y -= move
+        if Skeet_y == 355 and Skeet_x >= 925:
+            Skeet_y -= move
+        if Skeet_y == 220 and Skeet_x >=880:
+            Skeet_y += move
+        if Skeet_y == 260 and Skeet_x >=655 and Skeet_x <= 855:
+            Skeet_y += move
+        if Skeet_y == 125 and Skeet_x >= 650:
+            Skeet_y -= move
+        if Skeet_y == 80 and Skeet_x >= 805:
+            Skeet_y -= move
+
+
+
 
         print(yeet_x, yeet_y)
 
