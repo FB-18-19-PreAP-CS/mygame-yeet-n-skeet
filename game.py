@@ -109,7 +109,7 @@ if num == 1:
             if Skeet_y <= 160 and Skeet_y >= 115:
                 Skeet_x += move
             
-        #middle
+        #middle ##A few borders do not work
         if yeet_x >= 350 and yeet_x <= 580:
             if yeet_y <= 480 and yeet_y >= 435:
                 yeet_y -= move
@@ -136,22 +136,18 @@ if num == 1:
             if yeet_y >= 460 and yeet_y <= 585:
                 yeet_x -= move
 
-
-        # if yeet_x >= 350 and yeet_x <= 580:
-        #     if yeet_y <= 480 and yeet_y >= 435:
-        #         yeet_y -= move
         if yeet_x >= 555 and yeet_x <= 715:
             if yeet_y == 595:
                 yeet_y += move
         
 
-        #middle two 
-        if yeet_x >= 85 and yeet_x <= 355:
-            if yeet_y == 420:
-                yeet_y += move
-        if yeet_x >= 85 and yeet_x <= 355:
-            if yeet_y >= 272 and yeet_y <= 275:
-                yeet_y -= move
+        #middle two ###a few borders do not work
+        # if yeet_x >= 85 and yeet_x <= 355:
+        #     if yeet_y == 420:
+        #         yeet_y += move
+        # if yeet_x >= 85 and yeet_x <= 355:
+        #     if yeet_y >= 272 and yeet_y <= 275:
+        #         yeet_y -= move
 
         if yeet_x == 550:
             if yeet_y >= 285 and yeet_y < 420:
@@ -166,6 +162,54 @@ if num == 1:
         if yeet_x >= 560 and yeet_x <= 810:
             if yeet_y >= 283 and yeet_y <= 285:
                 yeet_y -= move
+
+        #middle Skeet
+        # if Skeet_y == 468 and Skeet_x >=240 and Skeet_x<= 330:
+        #     Skeet_y -=move
+
+        # if Skeet_x >= 350 and Skeet_x <= 580:
+        #     if Skeet_y <= 480 and Skeet_y >= 435:
+        #         Skeet_y -= move
+        # if Skeet_x >= 400 and Skeet_x <= 593:
+        #     if Skeet_y <= 570 and Skeet_y >= 565:
+        #         Skeet_y += move
+
+        # if Skeet_x >= 235 and Skeet_x <= 715:
+        #     if Skeet_y == 465:
+        #         Skeet_y -= move
+        # if Skeet_x >= 235 and Skeet_x <= 595:
+        #     if Skeet_y == 595:
+        #         Skeet_y += move
+
+        # if Skeet_x == 585:
+        #     if Skeet_y >= 430 and Skeet_y <= 460:
+        #         Skeet_y +=  move
+
+        # if Skeet_x == 735:
+        #     if Skeet_y >= 555 and Skeet_y <= 590:
+        #         Skeet_x == 740
+
+        # if Skeet_x >= 210 and Skeet_x <= 630:
+        #     if Skeet_y >= 460 and Skeet_y <= 585:
+        #         Skeet_x -= move
+
+        # if Skeet_x >= 555 and Skeet_x <= 715:
+        #     if Skeet_y == 595:
+        #         Skeet_y += move
+
+        #middle two Skeet ##works, no side borders tho
+
+        if Skeet_y == 290 and Skeet_x >=570 and Skeet_x<=800:
+            Skeet_y -= move
+        if Skeet_y == 420 and Skeet_x >= 570 and Skeet_x <= 800:
+            Skeet_y += move
+        
+        if Skeet_y == 280 and Skeet_x >=100 and Skeet_x <= 345:
+            Skeet_y -= move
+        if Skeet_y == 415 and Skeet_x >= 110 and Skeet_x <= 340:
+            Skeet_y += move
+        
+
 
 
         screen.blit(img, (1,1))
