@@ -6,25 +6,40 @@ from random import randint
 clock = pygame.time.Clock()
 vec = pygame.math.Vector2
 
-class Animation(Sprite):
-    def __init__(self.frames):
-        pygame.sprite.Sprite.__init__(self)
-        
-    def yeet_frames():
-        frames = []
-        for i in range(5):
-            frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
-        for i in range(5):
-            frames.append(frames[4-i]) # right, using same object twice
-        # this gives [0,1,2,3,4,4,3,2,1,0]
+# class Animation(Sprite):
+#     def __init__(self,frames):
+#         pygame.sprite.Sprite.__init__(self)
+#         self.frames = frames       # save the images in here
+#         self.current = 0       # idx of current image of the animation
+#         self.image = frames[0]  # just to prevent some errors
+#         self.rect = self.image.get_rect()    # same here
+#         self.playing = 0
 
-    def skeet_frames():
-        frames = []
-        for i in range(5):
-            frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
-        for i in range(5):
-            frames.append(frames[4-i]) # right, using same object twice
-        # this gives [0,1,2,3,4,4,3,2,1,0]
+#     def update(self, *args):
+#         if self.playing:    # only update the animation if it is playing
+#             self.current += 1
+#             if self.current == len(self.frames):
+#                 self.current = 0
+#             self.image = self.frames[self.current]
+#             # only needed if size changes within the animation
+#             self.rect = self.image.get_rect(center=self.rect.center)
+
+        
+#     def yeet_frames():
+#         frames = []
+#         for i in range(5):
+#             frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
+#         for i in range(5):
+#             frames.append(frames[4-i]) # right, using same object twice
+#         # this gives [0,1,2,3,4,4,3,2,1,0]
+
+#     def skeet_frames():
+#         frames = []
+#         for i in range(5):
+#             frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
+#         for i in range(5):
+#             frames.append(frames[4-i]) # right, using same object twice
+#         # this gives [0,1,2,3,4,4,3,2,1,0]
 
 
 num = 1#randint(1,2)
@@ -59,59 +74,19 @@ if num == 1:
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                #pygame.mixer.music.stop() #stop music
+                # pygame.mixer.music.stop() #stop music
                 running = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    yeet_y -= 250
-                elif event.key == pygame.K_s:
-                    Skeet_y -= 250
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_UP:
-                    yeet_y += 250
-                elif event.key == pygame.K_s:
-                    Skeet_y += 250
-            
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                yeet_y -= 250
+            elif event.key == pygame.K_s:
+                Skeet_y -= 250
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP:
+                yeet_y += 250
+            elif event.key == pygame.K_s:
+                Skeet_y += 250
         keys = pygame.key.get_pressed()
-
-
-        # def start(self):
-        # yeet_x = 500 #50
-        # yeet_y = 500 #870
-        # move_x = 10 
-        # move_y = 5
-        # self.screen.blit(self.yeet, (yeet_x,yeet_y))
-        # clock = pygame.time.Clock()
-        # while self.running:
-        #     dt = clock.tick(30)
-        #     speed = 1 / float(dt)
-        #     for event in pygame.event.get():
-        #         if event.type == pygame.QUIT:
-        #             run = False
-        #     keys = pygame.key.get_pressed()
-        #     if keys[pygame.K_RIGHT]: # move right
-        #         yeet_x += move_x
-        #     if keys[pygame.K_LEFT]: # move left
-        #         yeet_x -= move_x
-        #     if keys[pygame.K_UP]: # jump
-        #         yeet_y *= move_y * speed
-                
-        #         yeet_y /= move_y * speed
-
-        #     self.updates()
-
-        
-        #temp yeet controls
-        # if keys[pygame.K_DOWN]:
-        #     yeet_y += move
-        # if keys[pygame.K_UP]:
-        #     yeet_y -= move
-        
-        # if keys[pygame.K_s]:
-        #     Skeet_y += move
-        # if keys[pygame.K_w]:
-        #     Skeet_y -= move
-        #######
         if keys[pygame.K_RIGHT]:
             yeet_x +=move
         if keys[pygame.K_LEFT]:
