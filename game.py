@@ -15,6 +15,8 @@ from random import randint
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
 
+
+
 num = 1#randint(1,2)
 if num == 1:
     pygame.init()
@@ -22,6 +24,7 @@ if num == 1:
     Skeet = pygame.image.load("skeet transparent.png")
     Dave = pygame.image.load('Dave transparent.png')
     img = pygame.image.load("level 1 wip.png")
+    coin = pygame.image.load("coin.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
     screen = pygame.display.set_mode((1000,1000))
@@ -32,7 +35,11 @@ if num == 1:
     move = 5
     Skeet_x =879
     Skeet_y =905   
-            
+
+    coins = [(460,430), (250,275), (610,280), (10, 355), (925, 350)]
+
+    yeet_score = 0
+    Skeet_score = 0
             
     running = True
         
@@ -42,7 +49,7 @@ if num == 1:
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print(pygame.mouse.get_pos())
+                print(f"{yeet_x} {yeet_y}")
         keys = pygame.key.get_pressed()
         
         #temp yeet controls
@@ -84,6 +91,7 @@ if num == 1:
             yeet_y+= move
         if Skeet_y <= 0:
             Skeet_y -=move
+
 
 
 
@@ -196,14 +204,39 @@ if num == 1:
             Skeet_y -= move
 
 
-
-
-        print(yeet_x, yeet_y)
+        #print(yeet_x, yeet_y)
 
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
+        # screen.blit(coin, coins[0])
+        # screen.blit(coin, coins[1])
+        # screen.blit(coin, coins[2])
+        # screen.blit(coin, coins[3])
+        # screen.blit(coin, coins[4])
+
+        # for i in range(len(coins)):
+        #     yeet_coord = (yeet_x, yeet_y)
+        #     if coins[i] == yeet_coord:
+        #         del coins[i]
+        #     elif yeet_coord != coins[i]:
+        #         screen.blit(coin, coins[i])
+        i = 0
+        for ele in coins:
+            yeet_coord = (yeet_x, yeet_y)
+            Skeet_coord = (Skeet_x, Skeet_y)
+            if coins[i] == yeet_coord:
+                #yeet_score += 1
+                del coins[i]
+            if coins[i] == Skeet_coord:
+                #Skeet_score += 1
+                del coins[i]
+            elif yeet_coord != coins[i]:
+                screen.blit(coin, coins[i])
+            i += 1
+        
+
         pygame.display.update()
 elif num == 2:
     pygame.init()
