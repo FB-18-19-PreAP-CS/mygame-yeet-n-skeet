@@ -58,16 +58,18 @@ if num == 1:
 
     move = 5
     yeet_x = 10
-    yeet_y = 905
+    yeet_y = 880
     #yeet_pos = vec(10, 905)
     # yeet_vel = vec(0,0)
     # yeet_acc = vec(0,0)
 
     Skeet_x = 879
-    Skeet_y = 905
+    Skeet_y = 880
     #skeet_pos = vec(875,905)
     # skeet_vel = vec(0,905)
     # skeet_acc = vec(875,0)
+    prev_y = 0
+    prev_s = 0
 
     running = True
             
@@ -78,15 +80,29 @@ if num == 1:
                 running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                yeet_y -= 250
+                print(yeet_x, yeet_y)
+                yeet_y -= 100
+                print(yeet_x, yeet_y)
+                
             elif event.key == pygame.K_s:
-                Skeet_y -= 250
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP:
-                yeet_y += 250
-            elif event.key == pygame.K_s:
-                Skeet_y += 250
+                Skeet_y -= 100
+                print(Skeet_x, Skeet_y)
+                
+
+        # if event.type == pygame.KEYUP:
+        #     if event.key == pygame.K_UP:
+        #         print(yeet_x, yeet_y)
+        #         yeet_y += 100
+        #         print(yeet_x, yeet_y)
+                
+        #     elif event.key == pygame.K_s:
+        #         Skeet_y += 100
+        #         print(Skeet_x, Skeet_y)
+                
+
+
         keys = pygame.key.get_pressed()
+
         if keys[pygame.K_RIGHT]:
             yeet_x +=move
         if keys[pygame.K_LEFT]:
@@ -95,7 +111,7 @@ if num == 1:
             Skeet_x -= move
         if keys[pygame.K_d]:
             Skeet_x += move
-            
+
         if yeet_x <= -10:
             yeet_x += move
         if Skeet_x <= -10:
@@ -112,7 +128,7 @@ if num == 1:
             Skeet_y -= move
 
         if yeet_y <=0:
-            yeet_y+= move
+            yeet_y += move
         if Skeet_y <= 0:
             Skeet_y -=move
 
@@ -184,9 +200,6 @@ if num == 1:
         if yeet_x >= 605 and yeet_x <= 840:
             if yeet_y >= 283 and yeet_y <= 285:
                 yeet_y -= move
-
-
-        #print(yeet_x, yeet_y)
 
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
