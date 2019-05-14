@@ -1,45 +1,13 @@
 import pygame, sys
 from pygame.locals import *
+
 import itertools
 from pygame.sprite import Sprite
 from random import randint
+import math
+import time
 clock = pygame.time.Clock()
 vec = pygame.math.Vector2
-
-# class Animation(Sprite):
-#     def __init__(self,frames):
-#         pygame.sprite.Sprite.__init__(self)
-#         self.frames = frames       # save the images in here
-#         self.current = 0       # idx of current image of the animation
-#         self.image = frames[0]  # just to prevent some errors
-#         self.rect = self.image.get_rect()    # same here
-#         self.playing = 0
-
-#     def update(self, *args):
-#         if self.playing:    # only update the animation if it is playing
-#             self.current += 1
-#             if self.current == len(self.frames):
-#                 self.current = 0
-#             self.image = self.frames[self.current]
-#             # only needed if size changes within the animation
-#             self.rect = self.image.get_rect(center=self.rect.center)
-
-        
-#     def yeet_frames():
-#         frames = []
-#         for i in range(5):
-#             frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
-#         for i in range(5):
-#             frames.append(frames[4-i]) # right, using same object twice
-#         # this gives [0,1,2,3,4,4,3,2,1,0]
-
-#     def skeet_frames():
-#         frames = []
-#         for i in range(5):
-#             frames.append(pygame.image.load("yeet transparent"+str(i)+".png"))
-#         for i in range(5):
-#             frames.append(frames[4-i]) # right, using same object twice
-#         # this gives [0,1,2,3,4,4,3,2,1,0]
 
 
 num = 1#randint(1,2)
@@ -59,50 +27,57 @@ if num == 1:
     move = 5
     yeet_x = 10
     yeet_y = 880
+    yeet_on_ground = True
     #yeet_pos = vec(10, 905)
     # yeet_vel = vec(0,0)
     # yeet_acc = vec(0,0)
 
     Skeet_x = 879
     Skeet_y = 880
+    Skeet_on_ground = True
     #skeet_pos = vec(875,905)
     # skeet_vel = vec(0,905)
     # skeet_acc = vec(875,0)
-    prev_y = 0
-    prev_s = 0
+    yv = 8
+    sv = 8
+    
 
     running = True
-            
+
+    def yeet_jump():
+        global yeet_on_ground
+        yeet_on_ground = False
+
+    def yeet_update():
+        global yeet_on_ground
+        if yeet_on_ground == False:
+            if yv > 0 :
+                f = (0.5 * yv**2)
+            else:
+                f = -(0.5 * yv**2)
+            yeet_y -= f
+            yv -= 1 # affects jump path
+            if yeet_y >= 500:
+                yeet_y = 500
+                yeet_on_ground = True
+                yv = 0
+
     while running:
+        #yeet_update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 # pygame.mixer.music.stop() #stop music
                 running = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                print(yeet_x, yeet_y)
-                yeet_y -= 100
-                print(yeet_x, yeet_y)
-                
-            elif event.key == pygame.K_s:
-                Skeet_y -= 100
-                print(Skeet_x, Skeet_y)
-                
+            if event.key == pygame.K_UP and yeet_on_ground == True:
+                print('jump')
+                yeet_jump()
 
-        # if event.type == pygame.KEYUP:
-        #     if event.key == pygame.K_UP:
-        #         print(yeet_x, yeet_y)
-        #         yeet_y += 100
-        #         print(yeet_x, yeet_y)
-                
-        #     elif event.key == pygame.K_s:
-        #         Skeet_y += 100
-        #         print(Skeet_x, Skeet_y)
-                
-
+            elif event.key == pygame.K_s and Skeet_on_ground == True:
+                Skeet_y -= (0.5 * v**2)
+            
 
         keys = pygame.key.get_pressed()
-
         if keys[pygame.K_RIGHT]:
             yeet_x +=move
         if keys[pygame.K_LEFT]:
