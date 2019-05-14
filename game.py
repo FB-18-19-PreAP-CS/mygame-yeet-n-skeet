@@ -37,6 +37,9 @@ if num == 1:
     Skeet_y =905   
 
     coins = [(460,430), (250,275), (610,280), (10, 355), (925, 350)]
+    coins_2 = [(460,430), (145,595), (805,600), (475,620), (420,115)]
+
+    c = randint(1,2)
 
     yeet_score = 0
     Skeet_score = 0
@@ -223,19 +226,53 @@ if num == 1:
         #     elif yeet_coord != coins[i]:
         #         screen.blit(coin, coins[i])
         i = 0
-        for ele in coins:
-            yeet_coord = (yeet_x, yeet_y)
-            Skeet_coord = (Skeet_x, Skeet_y)
-            if coins[i] == yeet_coord:
-                #yeet_score += 1
-                del coins[i]
-            if coins[i] == Skeet_coord:
-                #Skeet_score += 1
-                del coins[i]
-            elif yeet_coord != coins[i]:
-                screen.blit(coin, coins[i])
-            i += 1
-        
+        c = 2
+        if c ==1:
+            for ele in coins:
+                yeet_coord = (yeet_x, yeet_y)
+                Skeet_coord = (Skeet_x, Skeet_y)
+                if coins[i] == yeet_coord:
+                    #yeet_score += 1
+                    del coins[i]
+                    
+                    continue
+
+                
+                if coins[i] == Skeet_coord:
+                    print('skeet')
+                    #Skeet_score += 1
+                    del coins[i]
+                    continue
+                elif yeet_coord != coins[i] and Skeet_coord != coins[1]:
+                    screen.blit(coin, coins[i])
+                i += 1
+
+
+
+        if c == 2:
+            for ele in coins_2:
+                try:
+                    yeet_coord = (yeet_x, yeet_y)
+                    Skeet_coord = (Skeet_x, Skeet_y)
+
+                    if coins_2[i] == Skeet_coord:
+                        print('skeet')
+                        #Skeet_score += 1
+                        del coins_2[i]
+                        continue
+                    if coins_2[i] == yeet_coord:
+                        #print('yeet')
+                        #yeet_score += 1
+                        del coins_2[i]
+                        continue
+                    # if coins_2[i] == Skeet_coord:
+                    #     #Skeet_score += 1
+                    #     del coins_2[i]
+                    elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
+                        screen.blit(coin, coins_2[i])
+                    i += 1
+                except:
+                    pass
 
         pygame.display.update()
 elif num == 2:
