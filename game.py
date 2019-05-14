@@ -109,95 +109,45 @@ if num == 1:
             if Skeet_y <= 160 and Skeet_y >= 115:
                 Skeet_x += move
             
-        #middle ##A few borders do not work
-        if yeet_x >= 350 and yeet_x <= 580:
-            if yeet_y <= 480 and yeet_y >= 435:
-                yeet_y -= move
-        if yeet_x >= 400 and yeet_x <= 593:
-            if yeet_y <= 570 and yeet_y >= 565:
-                yeet_y += move
-
-        if yeet_x >= 235 and yeet_x <= 715:
-            if yeet_y == 465:
-                yeet_y -= move
-        if yeet_x >= 235 and yeet_x <= 595:
-            if yeet_y == 595:
-                yeet_y += move
-
-        if yeet_x == 585:
-            if yeet_y >= 430 and yeet_y <= 460:
-                yeet_y +=  move
-
-        if yeet_x == 735:
-            if yeet_y >= 555 and yeet_y <= 590:
-                yeet_x == 740
-
-        if yeet_x >= 210 and yeet_x <= 630:
-            if yeet_y >= 460 and yeet_y <= 585:
-                yeet_x -= move
-
-        if yeet_x >= 555 and yeet_x <= 715:
-            if yeet_y == 595:
-                yeet_y += move
+        #middle 
+        if yeet_y == 475 and yeet_x >= 230 and yeet_x<=710:
+            yeet_y -= move
+        if yeet_y == 435 and yeet_x >=365 and yeet_x <= 555:
+            yeet_y -= move
+        if yeet_y == 590 and yeet_x >=240 and yeet_x <=375:
+            yeet_y += move
+        if yeet_y == 570 and yeet_x >= 375 and yeet_x <= 555:
+            yeet_y += move
+        if yeet_y == 590 and yeet_x >= 555 and yeet_x <= 705:
+            yeet_y += move
         
 
-        #middle two ###a few borders do not work
-        # if yeet_x >= 85 and yeet_x <= 355:
-        #     if yeet_y == 420:
-        #         yeet_y += move
-        # if yeet_x >= 85 and yeet_x <= 355:
-        #     if yeet_y >= 272 and yeet_y <= 275:
-        #         yeet_y -= move
-
-        if yeet_x == 550:
-            if yeet_y >= 285 and yeet_y < 420:
-                yeet_x -= move
-        if yeet_x <= 825 and yeet_x >= 775:
-            if yeet_y >= 280 and yeet_y <= 330:
-                yeet_x += move
-
-        if yeet_x >= 560 and yeet_x <= 810:
-            if yeet_y == 420:
-                yeet_y += move
-        if yeet_x >= 560 and yeet_x <= 810:
-            if yeet_y >= 283 and yeet_y <= 285:
-                yeet_y -= move
+        #middle two 
+        if yeet_y == 290 and yeet_x >=570 and yeet_x<=800:
+            yeet_y -= move
+        if yeet_y == 420 and yeet_x >= 570 and yeet_x <= 800:
+            yeet_y += move
+        
+        if yeet_y == 280 and yeet_x >=100 and yeet_x <= 345:
+            yeet_y -= move
+        if yeet_y == 415 and yeet_x >= 110 and yeet_x <= 340:
+            yeet_y += move
+        
 
         #middle Skeet
-        # if Skeet_y == 468 and Skeet_x >=240 and Skeet_x<= 330:
-        #     Skeet_y -=move
+        if Skeet_y == 475 and Skeet_x >= 230 and Skeet_x<=710:
+            Skeet_y -= move
+        if Skeet_y == 435 and Skeet_x >=365 and Skeet_x <= 555:
+            Skeet_y -= move
+        if Skeet_y == 590 and Skeet_x >=240 and Skeet_x <=375:
+            Skeet_y += move
+        if Skeet_y == 570 and Skeet_x >= 375 and Skeet_x <= 555:
+            Skeet_y += move
+        if Skeet_y == 590 and Skeet_x >= 555 and Skeet_x <= 705:
+            Skeet_y += move
+        
 
-        # if Skeet_x >= 350 and Skeet_x <= 580:
-        #     if Skeet_y <= 480 and Skeet_y >= 435:
-        #         Skeet_y -= move
-        # if Skeet_x >= 400 and Skeet_x <= 593:
-        #     if Skeet_y <= 570 and Skeet_y >= 565:
-        #         Skeet_y += move
-
-        # if Skeet_x >= 235 and Skeet_x <= 715:
-        #     if Skeet_y == 465:
-        #         Skeet_y -= move
-        # if Skeet_x >= 235 and Skeet_x <= 595:
-        #     if Skeet_y == 595:
-        #         Skeet_y += move
-
-        # if Skeet_x == 585:
-        #     if Skeet_y >= 430 and Skeet_y <= 460:
-        #         Skeet_y +=  move
-
-        # if Skeet_x == 735:
-        #     if Skeet_y >= 555 and Skeet_y <= 590:
-        #         Skeet_x == 740
-
-        # if Skeet_x >= 210 and Skeet_x <= 630:
-        #     if Skeet_y >= 460 and Skeet_y <= 585:
-        #         Skeet_x -= move
-
-        # if Skeet_x >= 555 and Skeet_x <= 715:
-        #     if Skeet_y == 595:
-        #         Skeet_y += move
-
-        #middle two Skeet ##works, no side borders tho
+        #middle two Skeet 
 
         if Skeet_y == 290 and Skeet_x >=570 and Skeet_x<=800:
             Skeet_y -= move
