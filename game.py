@@ -14,7 +14,16 @@ from random import randint
 #         self.image = pygame.Surface([width, height])
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
+WHITE = (255,255,255)
 
+
+font_name = pygame.font.match_font('arial')
+def display_text(surf, text, size, x, y):
+    font = pygame.font.Font(font_name, size)
+    text_surface = font.render(text, True, WHITE)
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (x,y)
+    surf.blit (text_surface, text_rect)
 
 
 num = 1#randint(1,2)
@@ -93,7 +102,7 @@ if num == 1:
         if yeet_y <=0:
             yeet_y+= move
         if Skeet_y <= 0:
-            Skeet_y -=move
+            Skeet_y +=move
 
 
 
@@ -206,13 +215,92 @@ if num == 1:
         if Skeet_y == 80 and Skeet_x >= 805:
             Skeet_y -= move
 
+        #top middle Yeet
+        if yeet_x >= 350 and yeet_x <= 510:
+            if yeet_y <= 200 and yeet_y >= 125:
+                yeet_y -= move
+        if yeet_x >= 350 and yeet_x <= 510:
+            if yeet_y <= 250 and yeet_y >= 200:
+                yeet_y += move
 
-        #print(yeet_x, yeet_y)
+        if yeet_x == 345: 
+            if yeet_y <= 255 and yeet_y >= 115:
+                yeet_x -= move
+        if yeet_x == 515:
+            if yeet_y <= 255 and yeet_y >= 115:
+                yeet_x += move
 
+        #top middle Skeet
+        if Skeet_x >= 350 and Skeet_x <= 475:
+            if Skeet_y <= 200 and Skeet_y >= 125:
+                Skeet_y -= move
+        if Skeet_x >= 350 and Skeet_x <= 490:
+            if Skeet_y <= 250 and Skeet_y >= 200:
+                Skeet_y += move
+        if Skeet_x == 345: 
+            if Skeet_y <= 255 and Skeet_y >= 115:
+                Skeet_x -= move
+        if Skeet_x == 515:
+            if Skeet_y <= 160 and Skeet_y >= 115:
+                Skeet_x += move
+            
+        #middle 
+        if yeet_y == 475 and yeet_x >= 230 and yeet_x<=710:
+            yeet_y -= move
+        if yeet_y == 435 and yeet_x >=365 and yeet_x <= 555:
+            yeet_y -= move
+        if yeet_y == 590 and yeet_x >=240 and yeet_x <=375:
+            yeet_y += move
+        if yeet_y == 570 and yeet_x >= 375 and yeet_x <= 555:
+            yeet_y += move
+        if yeet_y == 590 and yeet_x >= 555 and yeet_x <= 705:
+            yeet_y += move
+        
+
+        #middle two 
+        if yeet_y == 290 and yeet_x >=570 and yeet_x<=800:
+            yeet_y -= move
+        if yeet_y == 420 and yeet_x >= 570 and yeet_x <= 800:
+            yeet_y += move
+        
+        if yeet_y == 280 and yeet_x >=100 and yeet_x <= 345:
+            yeet_y -= move
+        if yeet_y == 415 and yeet_x >= 110 and yeet_x <= 340:
+            yeet_y += move
+        
+
+        #middle Skeet
+        if Skeet_y == 475 and Skeet_x >= 230 and Skeet_x<=710:
+            Skeet_y -= move
+        if Skeet_y == 435 and Skeet_x >=365 and Skeet_x <= 555:
+            Skeet_y -= move
+        if Skeet_y == 590 and Skeet_x >=240 and Skeet_x <=375:
+            Skeet_y += move
+        if Skeet_y == 570 and Skeet_x >= 375 and Skeet_x <= 555:
+            Skeet_y += move
+        if Skeet_y == 590 and Skeet_x >= 555 and Skeet_x <= 705:
+            Skeet_y += move
+        
+
+        #middle two Skeet 
+
+        if Skeet_y == 290 and Skeet_x >=570 and Skeet_x<=800:
+            Skeet_y -= move
+        if Skeet_y == 420 and Skeet_x >= 570 and Skeet_x <= 800:
+            Skeet_y += move
+        
+        if Skeet_y == 280 and Skeet_x >=100 and Skeet_x <= 345:
+            Skeet_y -= move
+        if Skeet_y == 415 and Skeet_x >= 110 and Skeet_x <= 340:
+            Skeet_y += move
+
+        
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
+        display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10)
+        display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10)
         # screen.blit(coin, coins[0])
         # screen.blit(coin, coins[1])
         # screen.blit(coin, coins[2])
@@ -275,68 +363,69 @@ if num == 1:
                     pass
 
         pygame.display.update()
-elif num == 2:
-    pygame.init()
-    yeet = pygame.image.load("yeet transparent.png")
-    Skeet = pygame.image.load("skeet transparent.png")
-    Dave = pygame.image.load('Dave transparent.png')
-    img = pygame.image.load("blorenge background.png")
-    pygame.display.set_icon(img) #sets an icon for the window
 
-    screen = pygame.display.set_mode((1000,1000))
-    pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+# elif num == 2:
+#     pygame.init()
+#     yeet = pygame.image.load("yeet transparent.png")
+#     Skeet = pygame.image.load("skeet transparent.png")
+#     Dave = pygame.image.load('Dave transparent.png')
+#     img = pygame.image.load("blorenge background.png")
+#     pygame.display.set_icon(img) #sets an icon for the window
 
-    yeet_x = 10
-    yeet_y = 905
-    move = 5
-    Skeet_x =879
-    Skeet_y =905   
+#     screen = pygame.display.set_mode((1000,1000))
+#     pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+
+#     yeet_x = 10
+#     yeet_y = 905
+#     move = 5
+#     Skeet_x =879
+#     Skeet_y =905   
         
         
-    running = True
+#     running = True
     
         
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-        keys = pygame.key.get_pressed()
+#     while running:
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 running = False
+#         keys = pygame.key.get_pressed()
         
-        #temp yeet controls
-        if keys[pygame.K_s]:
-            Skeet_y += move
-        if keys[pygame.K_w]:
-            Skeet_y -= move
+#         #temp yeet controls
+#         if keys[pygame.K_s]:
+#             Skeet_y += move
+#         if keys[pygame.K_w]:
+#             Skeet_y -= move
 
-        if keys[pygame.K_DOWN]:
-            yeet_y += move
-        if keys[pygame.K_UP]:
-            yeet_y -= move
+#         if keys[pygame.K_DOWN]:
+#             yeet_y += move
+#         if keys[pygame.K_UP]:
+#             yeet_y -= move
         
-        if keys[pygame.K_RIGHT]:
-            yeet_x +=move
-        if keys[pygame.K_LEFT]:
-            yeet_x -= move
-        if keys[pygame.K_a]:
-            Skeet_x -= move
-        if keys[pygame.K_d]:
-            Skeet_x += move
+#         if keys[pygame.K_RIGHT]:
+#             yeet_x +=move
+#         if keys[pygame.K_LEFT]:
+#             yeet_x -= move
+#         if keys[pygame.K_a]:
+#             Skeet_x -= move
+#         if keys[pygame.K_d]:
+#             Skeet_x += move
             
-        if yeet_x <= 0:
-            yeet_x += move
-        if Skeet_x <= 0:
-            Skeet_x += move
-        if yeet_x >= 930:
-            yeet_x -= move
-        if Skeet_x >= 930:
-            Skeet_x -= move
+#         if yeet_x <= 0:
+#             yeet_x += move
+#         if Skeet_x <= 0:
+#             Skeet_x += move
+#         if yeet_x >= 930:
+#             yeet_x -= move
+#         if Skeet_x >= 930:
+#             Skeet_x -= move
         
         
-        screen.blit(img, (1,1))
-        screen.blit(Dave, (50,10))
-        screen.blit(yeet, (yeet_x,yeet_y))
-        screen.blit(Skeet, (Skeet_x,Skeet_y))
-        pygame.display.update()
+#         screen.blit(img, (1,1))
+#         screen.blit(Dave, (50,10))
+#         screen.blit(yeet, (yeet_x,yeet_y))
+#         screen.blit(Skeet, (Skeet_x,Skeet_y))
+#         pygame.display.update()
 
 
 
