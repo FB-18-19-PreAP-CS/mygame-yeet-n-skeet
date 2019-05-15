@@ -44,12 +44,11 @@ def game():
                 print(0)
         keys = pygame.key.get_pressed()
         
-        #temp yeet controls
+        #temp yeet and skeet controls
         if keys[pygame.K_DOWN]:
             yeet_y += move
         if keys[pygame.K_UP]:
             yeet_y -= move
-            
         if keys[pygame.K_s]:
             Skeet_y += move
         if keys[pygame.K_w]:
@@ -64,6 +63,7 @@ def game():
         if keys[pygame.K_d]:
             Skeet_x += move
             
+        #boundaries
         if yeet_x <= -10:
             yeet_x += move
         if Skeet_x <= -10:
@@ -290,6 +290,8 @@ def game():
         if Skeet_y == 415 and Skeet_x >= 110 and Skeet_x <= 340:
             Skeet_y += move
 
+        #Dave's cloud
+
 
         yeet_coord = (yeet_x, yeet_y)
         Skeet_coord = (Skeet_x+1, Skeet_y)
@@ -297,8 +299,6 @@ def game():
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
-
-        
 
         i = 0
         c = 1
@@ -308,7 +308,6 @@ def game():
                     if coins[i] == yeet_coord:
                         yeet_score += 1
                         del coins[i]
-
 
                     elif yeet_coord != coins[i] and Skeet_coord != coins[i]:
                         screen.blit(coin, coins[i])
@@ -345,7 +344,7 @@ def game():
                     yeet_coord = (yeet_x, yeet_y)
                     Skeet_coord = (Skeet_x, Skeet_y)
                     if coins_2[i] == yeet_coord:
-                        #yeet_score += 1
+                        yeet_score += 1
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
