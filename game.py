@@ -7,6 +7,8 @@ from random import randint
 pygame.mixer.init()
 
 coin_s = pygame.mixer.Sound("coin_sound.wav")
+pygame.mixer.music.load("06 - Top City.mp3")
+pygame.mixer.music.play()
 
 def game():
     pygame.init()
@@ -23,8 +25,8 @@ def game():
     yeet_x = 10
     yeet_y = 905
     move = 5
-    Skeet_x =879
-    Skeet_y =905   
+    Skeet_x = 879
+    Skeet_y = 905   
 
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
@@ -35,8 +37,7 @@ def game():
     Skeet_score = 0
             
     running = True
-        
-            
+               
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -49,7 +50,6 @@ def game():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
                     coin_s.play()
-
 
         keys = pygame.key.get_pressed()
         
