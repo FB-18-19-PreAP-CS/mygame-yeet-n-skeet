@@ -53,6 +53,8 @@ if num == 1:
     yeet_score = 0
     Skeet_score = 0
             
+    is_dave = False
+
     running = True
         
             
@@ -296,6 +298,7 @@ if num == 1:
 
         yeet_coord = (yeet_x, yeet_y)
         Skeet_coord = (Skeet_x+1, Skeet_y)
+        Dave_coord = (450,10)
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
@@ -314,6 +317,8 @@ if num == 1:
         #         del coins[i]
         #     elif yeet_coord != coins[i]:
         #         screen.blit(coin, coins[i])
+        
+
         i = 0
         c = 1
         if c ==1:
@@ -326,9 +331,8 @@ if num == 1:
 
                     elif yeet_coord != coins[i] and Skeet_coord != coins[i]:
                         screen.blit(coin, coins[i])
-                    i += 1
-
-        i = 0
+                    i += 1 
+        i =0
         if c == 1:
             if len(coins_2) > 0:
                 for ele in coins:                    
@@ -364,6 +368,18 @@ if num == 1:
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
                     i += 1
+
+        if is_dave == False:
+            if Skeet_x >= 405 and Skeet_y == 5:
+                Skeet_score += 2
+                is_dave = True
+            if yeet_x >= 405 and yeet_y == 5:
+                yeet_score += 2
+                is_dave = True
+                
+        
+        
+        
         pygame.display.update()
 
 # elif num == 2:
