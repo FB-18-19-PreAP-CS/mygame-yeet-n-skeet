@@ -1,9 +1,12 @@
 import pygame, sys
 from pygame.locals import *
 import itertools
-from pygame.sprite import Sprite
+from pygame import mixer
 from random import randint
 
+pygame.mixer.init()
+
+coin_s = pygame.mixer.Sound("coin_sound.wav")
 
 def game():
     pygame.init()
@@ -42,6 +45,12 @@ def game():
                 print(f"{yeet_x} {yeet_y}")
                 print(f"{Skeet_x} {Skeet_y}")
                 print(0)
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    coin_s.play()
+
+
         keys = pygame.key.get_pressed()
         
         #temp yeet and skeet controls
@@ -307,6 +316,7 @@ def game():
                 for ele in coins:
                     if coins[i] == yeet_coord:
                         yeet_score += 1
+                        coin_s.play()
                         del coins[i]
 
                     elif yeet_coord != coins[i] and Skeet_coord != coins[i]:
@@ -319,6 +329,7 @@ def game():
                 for ele in coins:                    
                     if coins[i] == Skeet_coord:
                         Skeet_score += 1
+                        coin_s.play()
                         del coins[i]
                     elif yeet_coord != coins[i] and Skeet_coord != coins[i]:
                         screen.blit(coin, coins[i])
@@ -332,6 +343,7 @@ def game():
 
                     if coins_2[i] == Skeet_coord:
                         Skeet_score += 1
+                        coins_s.play()
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
@@ -345,6 +357,7 @@ def game():
                     Skeet_coord = (Skeet_x, Skeet_y)
                     if coins_2[i] == yeet_coord:
                         yeet_score += 1
+                        coin_s.play()
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
