@@ -68,23 +68,23 @@ if num == 1:
         
         #temp yeet controls
         if keys[pygame.K_DOWN]:
-            yeet_y += move
+            Skeet_y += move
         if keys[pygame.K_UP]:
-            yeet_y -= move
+            Skeet_y -= move
             
         if keys[pygame.K_s]:
-            Skeet_y += move
+            yeet_y += move
         if keys[pygame.K_w]:
-            Skeet_y -= move
+            yeet_y -= move
         
         if keys[pygame.K_RIGHT]:
-            yeet_x +=move
+            Skeet_x +=move
         if keys[pygame.K_LEFT]:
-            yeet_x -= move
-        if keys[pygame.K_a]:
             Skeet_x -= move
+        if keys[pygame.K_a]:
+            yeet_x -= move
         if keys[pygame.K_d]:
-            Skeet_x += move
+            yeet_x += move
             
         if yeet_x <= -10:
             yeet_x += move
