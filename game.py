@@ -13,59 +13,57 @@ class Jump():
     def __init__(self):
         self.yeet = pygame.image.load("yeet transparent.png")
         self.Skeet = pygame.image.load("skeet transparent.png")
-        self.Dave = pygame.image.load('Dave transparent.png')
-        self.img = pygame.image.load("level 1 wip.png")### edit for level 1 or 2
-        pygame.display.set_icon(self.img) #sets an icon for the window
-        pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
-        # pygame.mixer.music.load('rocketchip_zero_gravity_love.mp3') #music setup
-        # pygame.mixer.music.play(-1)
-        self.screen = pygame.display.set_mode((1000,1000))
         self.yeet.on_ground = True
         self.Skeet.on_ground = True
         #self.yeet.x = 10
-        self.yeet.y = 880
+        yeet_y = 880
         #self.Skeet.x = 879
         self.Skeet.y = 880
 
-
-    def update(self, player):
-        self.player.v = 8
-        if self.player.on_ground == False:
-            if self.player.v > 0 :
-                f = (0.5 * self.player.v**2)
-            else:
-                f = -(0.5 * self.player.v**2)
-            self.player.y -= f
-            v -= 1 # affects jump path
-            if yeet_y >= 500:
-                yeet_y = 500
-                self.yeet.on_ground = True
-                self.yeet.v = 0
+def update_yeet(yeet_v, yeet_y,yeet_jumping):
+    #yeet_v = 8
+    if yeet_jumping:
+        print(yeet_y)
+        if yeet_v > 0 :
+            f = (0.5 * yeet_v**2)
+        else:
+            f = -(0.5 * yeet_v**2)
+        yeet_y -= f
+        yeet_v -= 1 # affects jump path
+        if yeet_y >= 500:
+            yeet_y = 500
+            yeet_jumping = False
+            yeet_v = 0
 
 num = 1#randint(1,2)
 if num == 1:
     pygame.init()
-    
-    # yeet = pygame.image.load("yeet transparent.png")
-    # Skeet = pygame.image.load("skeet transparent.png")
-    # Dave = pygame.image.load('Dave transparent.png')
+    # pygame.mixer.music.load('rocketchip_zero_gravity_love.mp3') #music setup
+    # pygame.mixer.music.play(-1)
     img = pygame.image.load("level 1 wip.png")
+    yeet = pygame.image.load("yeet transparent.png")
+    Skeet = pygame.image.load("skeet transparent.png")
+    Dave = pygame.image.load('Dave transparent.png')
+    img = pygame.image.load("level 1 wip.png")
+
+    pygame.display.set_icon(img) #sets an icon for the window
+    pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
+    screen = pygame.display.set_mode((1000,1000))
 
     move = 5
     yeet_x = 10
     yeet_y = 880
+    yeet_v = 0 # vertical velocity of yeet
+    yeet_on_ground = True
+    yeet_jumping = False
 
     Skeet_x = 879
     Skeet_y = 880
+    Skeet_v = 0 # vertical velocity of Skeet
     Skeet_on_ground = True
+    Skeet_jumping = False
 
     running = True
-
-    # def yeet_jump():
-    #     global yeet_on_ground
-    #     yeet_on_ground = False
-
-    
 
     while running:
         #yeet_update()
@@ -74,13 +72,13 @@ if num == 1:
                 # pygame.mixer.music.stop() #stop music
                 running = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and yeet_on_ground == True:
+            if event.key == pygame.K_UP and not yeet_jumping:
                 print('jump')
-                yeet_on_ground = False
-                Jump.update(self.yeet)
+                yeet_v = 8
+                yeet_jumping = True
 
-            elif event.key == pygame.K_s and Skeet_on_ground == True:
-                print('skeet jump')
+            # elif event.key == pygame.K_s and Skeet_on_ground == True:
+            #     print('skeet jump')
 
             
         keys = pygame.key.get_pressed()
@@ -181,8 +179,7 @@ if num == 1:
         if yeet_x >= 605 and yeet_x <= 840:
             if yeet_y >= 283 and yeet_y <= 285:
                 yeet_y -= move
-
-        yeet_update()
+        update_yeet(yeet_v, yeet_y,yeet_jumping)
         screen.blit(img, (1,1))
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
