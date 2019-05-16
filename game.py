@@ -4,6 +4,17 @@ import itertools
 from pygame.sprite import Sprite
 from random import randint
 
+WHITE = (255,255,255)
+
+
+font_name = pygame.font.match_font('arial')
+def display_text(surf, text, size, x, y):
+    font = pygame.font.Font(font_name, size)
+    text_surface = font.render(text, True, WHITE)
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (x,y)
+    surf.blit (text_surface, text_rect)
+
 
 def game():
     pygame.init()
@@ -30,6 +41,8 @@ def game():
 
     yeet_score = 0
     Skeet_score = 0
+    
+    is_dave = False
             
     running = True
         
@@ -46,22 +59,22 @@ def game():
         
         #temp yeet and skeet controls
         if keys[pygame.K_DOWN]:
-            yeet_y += move
-        if keys[pygame.K_UP]:
-            yeet_y -= move
-        if keys[pygame.K_s]:
             Skeet_y += move
-        if keys[pygame.K_w]:
+        if keys[pygame.K_UP]:
             Skeet_y -= move
+        if keys[pygame.K_s]:
+            yeet_y += move
+        if keys[pygame.K_w]:
+            yeet_y -= move
         
         if keys[pygame.K_RIGHT]:
-            yeet_x +=move
+            Skeet_x +=move
         if keys[pygame.K_LEFT]:
-            yeet_x -= move
-        if keys[pygame.K_a]:
             Skeet_x -= move
+        if keys[pygame.K_a]:
+            yeet_x -= move
         if keys[pygame.K_d]:
-            Skeet_x += move
+            yeet_x += move
             
         #boundaries
         if yeet_x <= -10:
@@ -299,6 +312,8 @@ def game():
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
+        display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10)
+        display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10)
 
         i = 0
         c = 1
@@ -349,8 +364,15 @@ def game():
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
                     i += 1
-
-
+                    
+        if is_dave == False:
+            if Skeet_x >= 405 and Skeet_y == 5:
+                Skeet_score += 2
+                is_dave = True
+            if yeet_x >= 405 and yeet_y == 5:
+                yeet_score += 2
+                is_dave = True
+                
         pygame.display.update()
 
 game()
