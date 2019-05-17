@@ -7,8 +7,11 @@ from random import randint
 pygame.mixer.init()
 
 coin_s = pygame.mixer.Sound("coin_sound.wav")
+doggo_borko = pygame.mixer.Sound("277058__kwahmah-02__single-dog-bark.wav")
 pygame.mixer.music.load("06 - Top City.mp3")
-pygame.mixer.music.play()
+#pygame.mixer.music.play()
+
+
 
 def game():
     pygame.init()
@@ -18,6 +21,8 @@ def game():
     img = pygame.image.load("level 1 wip.png")
     coin = pygame.image.load("coin.png")
     pygame.display.set_icon(img) #sets an icon for the window
+
+    is_dave = False
 
     screen = pygame.display.set_mode((1000,1000))
     pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
@@ -35,6 +40,9 @@ def game():
 
     yeet_score = 0
     Skeet_score = 0
+
+    pygame.mixer.music.load("06 - Top City.mp3")
+    pygame.mixer.music.play()
             
     running = True
                
@@ -45,11 +53,11 @@ def game():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 print(f"{yeet_x} {yeet_y}")
                 print(f"{Skeet_x} {Skeet_y}")
-                print(0)
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
-                    coin_s.play()
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_q:
+            #         doggo_borko.play()
+            #         #pygame.mixer.music.play()
 
         keys = pygame.key.get_pressed()
         
@@ -363,6 +371,15 @@ def game():
                         screen.blit(coin, coins_2[i])
                     i += 1
 
+        if is_dave == False:
+            if Skeet_x >= 405 and Skeet_y == 5:
+                Skeet_score += 2
+                doggo_borko.play()
+                is_dave = True
+            if yeet_x >= 405 and yeet_y == 5:
+                yeet_score += 2
+                doggo_borko.play()
+                is_dave = True
 
         pygame.display.update()
 
