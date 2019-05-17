@@ -366,7 +366,7 @@ if num == 1:
                     yeet_coord = (yeet_x, yeet_y)
                     Skeet_coord = (Skeet_x, Skeet_y)
                     if coins_2[i] == yeet_coord:
-                        #yeet_score += 1
+                        yeet_score += 1
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
