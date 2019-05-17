@@ -3,6 +3,7 @@ from pygame.locals import *
 import itertools
 from pygame.sprite import Sprite
 from random import randint
+from time import sleep
 
 #class Game():
     # def __init__():
@@ -15,12 +16,12 @@ from random import randint
 #         self.image.fill('white')
 #         self.rect = self.image.get_rect()
 WHITE = (255,255,255)
-
+BLACK = (0,0,0)
 
 font_name = pygame.font.match_font('arial')
-def display_text(surf, text, size, x, y):
+def display_text(surf, text, size, x, y,color):
     font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, WHITE)
+    text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
     surf.blit (text_surface, text_rect)
@@ -34,6 +35,8 @@ if num == 1:
     Dave = pygame.image.load('Dave transparent.png')
     img = pygame.image.load("level 1 wip.png")
     coin = pygame.image.load("coin.png")
+    Skeet_win = pygame.image.load("skeet wins.png")
+    yeet_win = pygame.image.load("yeet wins.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
     screen = pygame.display.set_mode((1000,1000))
@@ -303,8 +306,8 @@ if num == 1:
         screen.blit(Dave, (450,10))
         screen.blit(yeet, (yeet_x,yeet_y))
         screen.blit(Skeet, (Skeet_x,Skeet_y))
-        display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10)
-        display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10)
+        display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10, WHITE)
+        display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
         # screen.blit(coin, coins[0])
         # screen.blit(coin, coins[1])
         # screen.blit(coin, coins[2])
@@ -320,7 +323,7 @@ if num == 1:
         
 
         i = 0
-        c = 1
+    
         if c ==1:
             if len(coins_2) > 0:
                 for ele in coins:
@@ -373,14 +376,39 @@ if num == 1:
             if Skeet_x >= 405 and Skeet_y == 5:
                 Skeet_score += 2
                 is_dave = True
+                if is_dave == True:
+                    if Skeet_score > yeet_score:
+                        
+                        #screen.blit(Skeet_win, (1,1))
+                        running = False
+                        #sleep(5)
+
+                        
+
             if yeet_x >= 405 and yeet_y == 5:
                 yeet_score += 2
                 is_dave = True
+                if is_dave == True:
+                    if yeet_score > Skeet_score:
+                        #screen.blit(yeet_win, (1,1))
+                        running = False
                 
         
         
         
         pygame.display.update()
+    if Skeet_score > yeet_score:
+        screen.blit(Skeet_win, (1,1))
+        display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
+        display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
+        pygame.display.update()
+        sleep(5)
+    if yeet_score > Skeet_score:
+        screen.blit(yeet_win, (1,1))
+        display_text(screen, f'Yeet won with a score of:{yeet_score}', 40, 500, 150,BLACK)
+        display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
+        pygame.display.update()
+        sleep(5)
 
 # elif num == 2:
 #     pygame.init()
