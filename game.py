@@ -8,9 +8,9 @@ WHITE = (255,255,255)
 
 
 font_name = pygame.font.match_font('arial')
-def display_text(surf, text, size, x, y):
+def display_text(surf, text, size, x, y, color):
     font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, WHITE)
+    text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
     surf.blit (text_surface, text_rect)
@@ -23,6 +23,8 @@ def game():
     Dave = pygame.image.load('Dave transparent.png')
     img = pygame.image.load("level 1 wip.png")
     coin = pygame.image.load("coin.png")
+    Skeet_win = pygame.image.load("skeet wins.png")
+    yeet_win = pygame.image.load("yeet wins.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
     screen = pygame.display.set_mode((1000,1000))
@@ -369,11 +371,33 @@ def game():
             if Skeet_x >= 405 and Skeet_y == 5:
                 Skeet_score += 2
                 is_dave = True
+                if is_dave == True:
+                    if Skeet_score > yeet_score:
+                        
+                        #screen.blit(Skeet_win, (1,1))
+                        running = False
+                        
             if yeet_x >= 405 and yeet_y == 5:
                 yeet_score += 2
                 is_dave = True
+                if is_dave == True:
+                    if yeet_score > Skeet_score:
+                        #screen.blit(yeet_win, (1,1))
+                        running = False
                 
         pygame.display.update()
+        if Skeet_score > yeet_score:
+            screen.blit(Skeet_win, (1,1))
+            display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
+            display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
+            pygame.display.update()
+            sleep(5)
+        if yeet_score > Skeet_score:
+            screen.blit(yeet_win, (1,1))
+            display_text(screen, f'Yeet won with a score of:{yeet_score}', 40, 500, 150,BLACK)
+            display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
+            pygame.display.update()
+            sleep(5)
 
 game()
 
