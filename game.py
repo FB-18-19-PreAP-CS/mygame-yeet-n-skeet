@@ -107,9 +107,9 @@ def game():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP and not yeet_jumping:
-                    yeet_v = 10.5
-                    yeet_jumping = True
+#                if event.key == pygame.K_UP and not yeet_jumping:
+#                    yeet_v = 10.5
+#                    yeet_jumping = True
                 if event.key == pygame.K_s and not Skeet_jumping:
                     Skeet_v = 10.5
                     Skeet_jumping = True
@@ -119,8 +119,10 @@ def game():
         #temp yeet and skeet controls
 ##        if keys[pygame.K_DOWN]:
 ##            yeet_y += move
-##        if keys[pygame.K_UP]:
-##            yeet_y -= move
+        if keys[pygame.K_UP] and not yeet_jumping:
+            yeet_v = 10.5
+            yeet_jumping = True
+            #yeet_y -= move
 ##        if keys[pygame.K_s]:
 ##            Skeet_y += move
 ##        if keys[pygame.K_w]:
@@ -374,7 +376,7 @@ def game():
             
         yeet_coord = (yeet_x, yeet_y)
         Skeet_coord = (Skeet_x+1, Skeet_y)
-#        screen.blit(img, (1,1))
+        screen.blit(img, (1,1))
 #        screen.blit(Dave, (450,10))
 #        screen.blit(yeet, (yeet_x,yeet_y))
 #        screen.blit(Skeet, (Skeet_x,Skeet_y))
@@ -453,7 +455,7 @@ def game():
                         running = False
             update_yeet()
             update_skeet()
-            screen.blit(img, (1,1))
+            #screen.blit(img, (1,1))
             screen.blit(Dave, (450,10))
             screen.blit(yeet, (yeet_x,yeet_y))
             screen.blit(Skeet, (Skeet_x,Skeet_y))
