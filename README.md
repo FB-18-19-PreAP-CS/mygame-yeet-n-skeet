@@ -14,10 +14,6 @@
       <br />-Be the first player to reach Dave. </br>
       <br />•When does the game end?:
       <br />-The game ends once when a player reaches Dave.
-      <br />-A win screen will appear displaying the winner's score and the game will close.
+      <br />-A win screen will appear displaying the winner's score and the game will close.</br>
       
-      
-
-HOW TO PLAY:
-
-REFERENCES:
+**GRAPHICS:**
