@@ -7,10 +7,11 @@
 
 <h3>GAMEPLAY:</h3> 
 
-**•How do you play?:**  
-      <br />-You and one friend will play as Yeet and Skeet. 
-      <br />-Yeet has the controls W,A,D (w = jump, A= move left, and D = move right.) 
-      <br />-Skeet has the controls Up_arrow, Left_arrow, and Right_arrow (Up = jump, Left = move left, and Right = move right) </br>
+
+**•How do you play?:**
+<br />-You and one friend will play as Yeet and Skeet. 
+<br />-Yeet has the controls W,A,D (w = jump, A= move left, and D = move right.) 
+<br />-Skeet has the controls Up_arrow, Left_arrow, and Right_arrow (Up = jump, Left = move left, and Right = move right) </br>
       
 **•What is the goal?:**
       <br />-Collect as many coins as you can.
