@@ -1,4 +1,4 @@
-<h1>YEET 'N SKEET GAME MANUAL</h1>
+<h1>YEET 'N SKEET GAME MANUAL <img src="skeet transparent.png" alt=""</h1> 
 
    <h5>DESCRIPTION:</h5>
     In a lush, mountainous region in Wales, two teens, Yeet and Skeet, skate at a bike park with their beloved dog, Dave.
