@@ -11,9 +11,11 @@
       <br />-You and one friend will play as Yeet and Skeet. 
       <br />-Yeet has the controls W,A,D (w = jump, A= move left, and D = move right.) 
       <br />-Skeet has the controls Up_arrow, Left_arrow, and Right_arrow (Up = jump, Left = move left, and Right = move right) </br>
+      
 **•What is the goal?:**
       <br />-Collect as many coins as you can.
       <br />-Be the first player to reach Dave. </br>
+      
 **•When does the game end?:**
       <br />-The game ends once when a player reaches Dave.
       <br />-A win screen will appear displaying the winner's score and the game will close.</br>
