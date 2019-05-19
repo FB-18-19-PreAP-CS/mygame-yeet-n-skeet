@@ -49,8 +49,7 @@
 <br /> https://stackoverflow.com/questions/29640685/how-do-i-detect-collision-in-pygame
 <br /> -Background: https://dr0id.bitbucket.io/legacy/pygame_tutorial00.html
 <br /> https://stackoverflow.com/questions/32061507/moving-a-rectangle-in-pygame
-
-**•Jump:** 
+<br />-Jump: 
 <p>~https://pythonspot.com/jump-and-run-in-pygame/ </p>
 <p>~https://github.com/FB-18-19-PreAP-CS/mygame_purdy/blob/master/jumping.py </p>
 <p>~https://gamedevelopment.tutsplus.com/tutorials/quick-tip-avoid-game-watch-gravity-in-your-characters-jumps--gamedev-6759 </p>
