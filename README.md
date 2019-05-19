@@ -46,6 +46,11 @@
 <br /> -Audio Converter: https://y2mate.com/
 
 **•Code Help:**
+<br /> -Characters/blits: ~https://dr0id.bitbucket.io/legacy/pygame_tutorial01.html
+<p> ~https://stackoverflow.com/questions/8767129/how-to-have-an-image-appear-in-python-pygame </p>
+<p> ~https://stackoverflow.com/questions/8773450/how-do-you-make-a-sprite-appear-in-pygame-python </p>
+<p> ~https://www.pygame.org/docs/tut/tom_games5.html?highlight=control%20blits </p>
+
 <br /> -Display text: http://kidscancode.org/blog/2016/08/pygame_shmup_part_7/
 
 <br /> -Music set up: ~https://www.youtube.com/watch?v=1o9bfWz1-1g
