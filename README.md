@@ -17,3 +17,7 @@
       <br />-A win screen will appear displaying the winner's score and the game will close.</br>
       
 **GRAPHICS:**
+<p><img src="Dave transparent resize.png" alt="Dave the dog" /></p>
+<p><img src="skeet transparent resize.png" alt="Skeet" /></p>
+<p><img src="yeet transparent resize.png" alt="yeet" /></p>
+<p><img src="level 1 wip.png" alt="Level 1 pixel art" /></p>
