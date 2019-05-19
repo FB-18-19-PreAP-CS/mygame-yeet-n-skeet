@@ -22,6 +22,7 @@
       <br />-A win screen will appear displaying the winner's score and the game will close.</br>
       
 <h3>INPUTS AND EXPLANATIONS:</h3>
+
 **(w.i.p)**
 
 <h3>GRAPHICS:</h3>
@@ -34,23 +35,30 @@
 <p><img src="skeet wins.png" alt="skeet win screen" /></p>
 
 <h3>REFRENCES:</h3>
+
 **•Sounds:**
 <br /> -Dog Bark: https://freesound.org/people/kwahmah_02/sounds/277058/
+
 <br /> -Background Music: https://ozzed.net/music/friendship-adventure.shtml
+
 <br /> -Coin sound: https://freesound.org/people/Breviceps/sounds/450614/
+
 <br /> -Audio Converter: https://y2mate.com/
 
 **•Code Help:**
 <br /> -Display text: http://kidscancode.org/blog/2016/08/pygame_shmup_part_7/
-<br /> -Music set up: https://www.youtube.com/watch?v=1o9bfWz1-1g
-<br /> https://nerdparadise.com/programming/pygame/part3
-<br /> -Borders and Collisions: https://stackoverflow.com/questions/45659626/how-to-set-boundaries-in-pygame 
-<br /> http://gamingdirectional.com/blog/2016/08/29/how-to-detect-boundary-in-pygame/
-<br /> https://stackoverflow.com/questions/29640685/how-do-i-detect-collision-in-pygame
-<br /> -Background: https://dr0id.bitbucket.io/legacy/pygame_tutorial00.html
-<br /> https://stackoverflow.com/questions/32061507/moving-a-rectangle-in-pygame
-<br />-Jump: 
-<p>~https://pythonspot.com/jump-and-run-in-pygame/ </p>
+
+<br /> -Music set up: ~https://www.youtube.com/watch?v=1o9bfWz1-1g
+<p> https://nerdparadise.com/programming/pygame/part3 </p>
+
+<br /> -Borders and Collisions: ~https://stackoverflow.com/questions/45659626/how-to-set-boundaries-in-pygame 
+<p> http://gamingdirectional.com/blog/2016/08/29/how-to-detect-boundary-in-pygame/ </p>
+<p> https://stackoverflow.com/questions/29640685/how-do-i-detect-collision-in-pygame </p>
+
+<br /> -Background:~https://dr0id.bitbucket.io/legacy/pygame_tutorial00.html
+<p> ~https://stackoverflow.com/questions/32061507/moving-a-rectangle-in-pygame </p>
+
+<br />-Jump: ~https://pythonspot.com/jump-and-run-in-pygame/ 
 <p>~https://github.com/FB-18-19-PreAP-CS/mygame_purdy/blob/master/jumping.py </p>
 <p>~https://gamedevelopment.tutsplus.com/tutorials/quick-tip-avoid-game-watch-gravity-in-your-characters-jumps--gamedev-6759 </p>
 <p>~https://pythonspot.com/jump-and-run-in-pygame/ </p>
