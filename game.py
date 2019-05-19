@@ -110,7 +110,7 @@ def game():
 #                if event.key == pygame.K_UP and not yeet_jumping:
 #                    yeet_v = 10.5
 #                    yeet_jumping = True
-                if event.key == pygame.K_s and not Skeet_jumping:
+                if event.key == pygame.K_DOWN and not Skeet_jumping:
                     Skeet_v = 10.5
                     Skeet_jumping = True
 
@@ -119,7 +119,7 @@ def game():
         #temp yeet and skeet controls
 ##        if keys[pygame.K_DOWN]:
 ##            yeet_y += move
-        if keys[pygame.K_UP] and not yeet_jumping:
+        if keys[pygame.K_w] and not yeet_jumping:
             yeet_v = 10.5
             yeet_jumping = True
             #yeet_y -= move
@@ -136,13 +136,13 @@ def game():
 ##            Skeet_x -= move
 ##        if keys[pygame.K_d]:
 ##            Skeet_x += move
-        if keys[pygame.K_RIGHT]:
-            yeet_x +=move
-        if keys[pygame.K_LEFT]:
-            yeet_x -= move
-        if keys[pygame.K_a]:
-            Skeet_x -= move
         if keys[pygame.K_d]:
+            yeet_x +=move
+        if keys[pygame.K_a]:
+            yeet_x -= move
+        if keys[pygame.K_LEFT]:
+            Skeet_x -= move
+        if keys[pygame.K_RIGHT]:
             Skeet_x += move
             
         #boundaries
@@ -462,6 +462,7 @@ def game():
             
 
         pygame.display.update()
+        
     if Skeet_score > yeet_score:
             screen.blit(Skeet_win, (1,1))
             display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
