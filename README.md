@@ -1,4 +1,4 @@
-**YEET 'N SKEET GAME MANUAL**
+#**YEET 'N SKEET GAME MANUAL**
 
 DESCRIPTION:
     In a lush, mountainous region in Wales, two teens, Yeet and Skeet, skate at a bike park with their beloved dog, Dave.
