@@ -9,7 +9,7 @@
       -You and one friend will play as Yeet and Skeet. 
       <br />-Yeet has the controls W,A,D (w = jump, A= move left, and D = move right.) 
       <br />-Skeet has the controls Up_arrow, Left_arrow, and Right_arrow (Up = jump, Left = move left, and Right = move right) </br>
-      <br /> •What is the goal?:
+      <br />•What is the goal?:
       <br />-Collect as many coins as you can.
       <br />-Be the first player to reach Dave. </br>
       <br />•When does the game end?:
@@ -29,3 +29,10 @@
 <p><img src="skeet wins.png" alt="skeet win screen" /></p>
 
 **REFRENCES:**<br /> 
+•Sounds:
+<br /> -Dog Bark: https://freesound.org/people/kwahmah_02/sounds/277058/
+<br /> -Background Music: https://ozzed.net/music/friendship-adventure.shtml
+<br /> -Coin sound: https://freesound.org/people/Breviceps/sounds/450614/
+<br /> -Audio Converter: https://y2mate.com/
+<br />•Code Help:
+<br /> -
