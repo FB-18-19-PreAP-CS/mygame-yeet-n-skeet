@@ -54,7 +54,6 @@ def display_text(surf, text, size, x, y, color):
     surf.blit (text_surface, text_rect)
 
 pygame.mixer.init()
-
 coin_s = pygame.mixer.Sound("coin_sound.wav")
 doggo_borko = pygame.mixer.Sound("277058__kwahmah-02__single-dog-bark.wav")
 pygame.mixer.music.load("06 - Top City.ogg")
@@ -96,10 +95,6 @@ def game():
     Skeet_score = 0
     
     is_dave = False
-
-    pygame.mixer.music.load("06 - Top City.mp3")
-    pygame.mixer.music.play()
-        
     running = True
                
     while running:
@@ -477,6 +472,3 @@ def game():
         sleep(5)
 
 game()
-
-        
-    
