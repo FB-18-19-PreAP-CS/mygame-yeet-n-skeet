@@ -399,6 +399,19 @@ if num == 1:
                         screen.blit(coin, coins_3[i])
                     i += 1
 
+        i = 0
+        if c == 3:
+            if len(coins_3) > 0:
+                for ele in coins_3:
+                    yeet_coord = (yeet_x, yeet_y)
+                    Skeet_coord = (Skeet_x, Skeet_y)
+                    if coins_3[i] == Skeet_coord:
+                        Skeet_score += 1
+                        del coins_3[i]
+                    elif yeet_coord != coins_3[i] and Skeet_coord != coins_3[i]:
+                        screen.blit(coin, coins_3[i])
+                    i += 1
+
         if is_dave == False:
             if Skeet_x >= 405 and Skeet_y == 5:
                 Skeet_score += 2
