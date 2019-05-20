@@ -22,8 +22,8 @@
       <br />-A win screen will appear displaying the winner's score and the game will close.</br>
       
 <h3>INPUTS AND EXPLANATIONS:</h3>
-
-**(w.i.p)**
+<br /> Skeet controls: Up_arrow, Left_arrow, Right_arrow
+<br /> Yeet controls: W(jump),A(left),D(right)
 
 <h3>GRAPHICS:</h3>
 <p><img src="Dave transparent resize.png" alt="Dave the dog" /></p>
