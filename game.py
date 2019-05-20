@@ -57,7 +57,7 @@ pygame.mixer.init()
 
 coin_s = pygame.mixer.Sound("coin_sound.wav")
 doggo_borko = pygame.mixer.Sound("277058__kwahmah-02__single-dog-bark.wav")
-pygame.mixer.music.load("06 - Top City.mp3")
+pygame.mixer.music.load("06 - Top City.ogg")
 pygame.mixer.music.play(-1)
 
 def game():
