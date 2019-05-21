@@ -17,6 +17,7 @@ Skeet_jumping = False
 def update_yeet():
     global yeet_v, yeet_y,yeet_jumping
     if yeet_jumping:
+        print('yeet jump')
         if yeet_v > 0 :
             f = (0.5 * yeet_v**2)
         else:
@@ -31,6 +32,7 @@ def update_yeet():
 def update_skeet():
     global Skeet_v, Skeet_y,Skeet_jumping
     if Skeet_jumping:
+        print('skeet jump')
         if Skeet_v > 0 :
             f = (0.5 * Skeet_v**2)
         else:
@@ -56,10 +58,11 @@ def display_text(surf, text, size, x, y, color):
 pygame.mixer.init()
 coin_s = pygame.mixer.Sound("coin_sound.wav")
 doggo_borko = pygame.mixer.Sound("277058__kwahmah-02__single-dog-bark.wav")
-pygame.mixer.music.load("06 - Top City.ogg")
+pygame.mixer.music.load("06 - Top City.mp3")
 pygame.mixer.music.play(-1)
 
-def game():
+num = 1#randint(1,2)
+if num == 1:
     pygame.init()
     yeet = pygame.image.load("yeet transparent.png")
     Skeet = pygame.image.load("skeet transparent.png")
@@ -95,6 +98,7 @@ def game():
     Skeet_score = 0
     
     is_dave = False
+
     running = True
                
     while running:
@@ -103,11 +107,13 @@ def game():
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w and not yeet_jumping:
-                   yeet_v = 10.5
-                   yeet_jumping = True
-                if event.key == pygame.K_UP and not Skeet_jumping:
+                    yeet_v = 10.5
+                    yeet_jumping = True
+                    yeet_on_ground = False
+                elif event.key == pygame.K_UP and not Skeet_jumping:
                     Skeet_v = 10.5
                     Skeet_jumping = True
+                    Skeet_on_ground = False
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_d]:
@@ -156,10 +162,12 @@ def game():
         if Skeet_y == 625 and Skeet_x >= 400 and Skeet_x <=550:
             Skeet_y -= move
         #leaf tree border
-        if yeet_y ==680 and yeet_x >= 280 and yeet_x <= 680:
+        if yeet_x >= 280 and yeet_x <= 680 and yeet_y >= 675 and yeet_y <= 680:
             yeet_y -= move
-        if Skeet_y ==680 and Skeet_x >= 280 and Skeet_x <= 680:
+            yeet_jumping = False
+        if Skeet_x >= 280 and Skeet_x <= 680 and Skeet_y >= 675 and Skeet_y <=680:
             Skeet_y -= move
+            Skeet_jumping = False
         ##bottom of leaves
         if yeet_y == 830 and yeet_x >= 285 and yeet_x <= 655:
             yeet_y += move
@@ -346,7 +354,7 @@ def game():
         if Skeet_y == 415 and Skeet_x >= 110 and Skeet_x <= 340:
             Skeet_y += move
 
-        #Dave's cloud
+        
         update_yeet()
         update_skeet()
         yeet_coord = (yeet_x, yeet_y)
@@ -359,8 +367,9 @@ def game():
         display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
         pygame.display.update()
 
+        #Dave's cloud
         i = 0
-        if c ==1:
+        if c == 1:
             if len(coins_2) > 0:
                 for ele in coins:
                     if coins[i] == yeet_coord:
@@ -428,13 +437,14 @@ def game():
                 if is_dave == True:
                     if yeet_score > Skeet_score:
                         running = False
-        
+                        
+        pygame.display.update()
     if Skeet_score > yeet_score:
-            screen.blit(Skeet_win, (1,1))
-            display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
-            display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
-            pygame.display.update()
-            sleep(5)
+        screen.blit(Skeet_win, (1,1))
+        display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
+        display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
+        pygame.display.update()
+        sleep(5)
     if yeet_score > Skeet_score:
         screen.blit(yeet_win, (1,1))
         display_text(screen, f'Yeet won with a score of:{yeet_score}', 40, 500, 150,BLACK)
@@ -442,4 +452,11 @@ def game():
         pygame.display.update()
         sleep(5)
 
-game()
+    update_yeet()
+    update_skeet()
+    screen.blit(img, (1,1))
+    screen.blit(Dave, (450,10))
+    screen.blit(yeet, (yeet_x,yeet_y))
+    screen.blit(Skeet, (Skeet_x,Skeet_y))
+    pygame.display.update()
+
