@@ -91,8 +91,8 @@ if num == 1:
 
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
-
-    c = randint(1,2)
+    coins_3 = [(360, 675), (615, 470), (20,55), (880, 75),(410,430)]
+    c = randint(1,3)
 
     yeet_score = 0
     Skeet_score = 0
@@ -419,6 +419,36 @@ if num == 1:
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
+                    i += 1
+        i = 0#index of coins
+        if c == 3:
+            #sees if skeet has found a coin
+            if len(coins_3) > 0:
+                for ele in coins_3:
+                    yeet_coord = (yeet_x, yeet_y)
+                    Skeet_coord = (Skeet_x+1, Skeet_y)
+
+                    if coins_3[i] == Skeet_coord:
+                        Skeet_score += 1
+                        coin_s.play()
+                        del coins_3[i]
+                    elif yeet_coord != coins_3[i] and Skeet_coord != coins_3[i]:
+                        screen.blit(coin, coins_3[i])
+                    i += 1
+        #index of coins
+        i = 0
+        if c == 3:
+            ##sees if yeet has found a coin
+            if len(coins_3) > 0:
+                for ele in coins_3:
+                    yeet_coord = (yeet_x, yeet_y)
+                    Skeet_coord = (Skeet_x, Skeet_y)
+                    if coins_3[i] == yeet_coord:
+                        yeet_score += 1
+                        coin_s.play()
+                        del coins_3[i]
+                    elif yeet_coord != coins_3[i] and Skeet_coord != coins_3[i]:
+                        screen.blit(coin, coins_3[i])
                     i += 1
 
         if is_dave == False:
