@@ -100,8 +100,10 @@ def game():
     #locations of the coins
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
+    coins_3 = [(360, 675), (615, 470), (20,55), (880, 75),(410,430)]
     c = randint(1,2) #which coin map the player will have
 
+    c = 3
     #scores of the characters
     yeet_score = 0
     Skeet_score = 0
@@ -132,6 +134,16 @@ def game():
             yeet_x +=move
         if keys[pygame.K_a]:
             yeet_x -= move
+            
+        #up and down
+        if keys[pygame.K_w]:
+            yeet_y +=move
+        if keys[pygame.K_s]:
+            yeet_y -= move
+        if keys[pygame.K_UP]:
+            Skeet_y -= move
+        if keys[pygame.K_DOWN]:
+            Skeet_y += move
 
         #right and left for skeet
         if keys[pygame.K_LEFT]:
@@ -411,7 +423,7 @@ def game():
 
                     if coins_2[i] == Skeet_coord:
                         Skeet_score += 1
-                        coins_s.play()
+                        coin_s.play()
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
@@ -430,6 +442,38 @@ def game():
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
+                    i += 1
+                    
+         ### COINMAP 3 ###
+        i = 0#index of coins
+        if c == 3:
+            #sees if skeet has found a coin
+            if len(coins_3) > 0:
+                for ele in coins_3:
+                    yeet_coord = (yeet_x, yeet_y)
+                    Skeet_coord = (Skeet_x+1, Skeet_y)
+
+                    if coins_3[i] == Skeet_coord:
+                        Skeet_score += 1
+                        coin_s.play()
+                        del coins_3[i]
+                    elif yeet_coord != coins_3[i] and Skeet_coord != coins_3[i]:
+                        screen.blit(coin, coins_3[i])
+                    i += 1
+        #index of coins
+        i = 0
+        if c == 3:
+            ##sees if yeet has found a coin
+            if len(coins_3) > 0:
+                for ele in coins_3:
+                    yeet_coord = (yeet_x, yeet_y)
+                    Skeet_coord = (Skeet_x, Skeet_y)
+                    if coins_3[i] == yeet_coord:
+                        yeet_score += 1
+                        coin_s.play()
+                        del coins_3[i]
+                    elif yeet_coord != coins_3[i] and Skeet_coord != coins_3[i]:
+                        screen.blit(coin, coins_3[i])
                     i += 1
 
         #Dave's cloud. 
@@ -450,6 +494,8 @@ def game():
                 if is_dave == True:
                     if yeet_score > Skeet_score:
                         running = False
+                        
+            print(yeet_x, yeet_y)
             update_yeet()
             update_skeet()
             screen.blit(Dave, (450,10))
