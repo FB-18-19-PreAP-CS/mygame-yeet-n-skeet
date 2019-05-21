@@ -134,17 +134,7 @@ def game():
             yeet_x +=move
         if keys[pygame.K_a]:
             yeet_x -= move
-            
-        #up and down
-        if keys[pygame.K_w]:
-            yeet_y +=move
-        if keys[pygame.K_s]:
-            yeet_y -= move
-        if keys[pygame.K_UP]:
-            Skeet_y -= move
-        if keys[pygame.K_DOWN]:
-            Skeet_y += move
-
+          
         #right and left for skeet
         if keys[pygame.K_LEFT]:
             Skeet_x -= move
