@@ -17,7 +17,6 @@ Skeet_jumping = False
 def update_yeet():
     global yeet_v, yeet_y,yeet_jumping
     if yeet_jumping:
-        print('yeet jump')
         if yeet_v > 0 :
             f = (0.5 * yeet_v**2)
         else:
@@ -32,7 +31,6 @@ def update_yeet():
 def update_skeet():
     global Skeet_v, Skeet_y,Skeet_jumping
     if Skeet_jumping:
-        print('skeet jump')
         if Skeet_v > 0 :
             f = (0.5 * Skeet_v**2)
         else:
@@ -47,33 +45,46 @@ def update_skeet():
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
+#colors and set up for fonts
+WHITE = (255,255,255)
+BLACK = (0,0,0)
 font_name = pygame.font.match_font('arial')
 def display_text(surf, text, size, x, y, color):
+    '''allows text to be displayed on screen'''
     font = pygame.font.Font(font_name, size)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
     surf.blit (text_surface, text_rect)
 
+#music and sounds used in game
 pygame.mixer.init()
 coin_s = pygame.mixer.Sound("coin_sound.wav")
 doggo_borko = pygame.mixer.Sound("277058__kwahmah-02__single-dog-bark.wav")
-pygame.mixer.music.load("06 - Top City.ogg")
-pygame.mixer.music.play(-1)
+pygame.mixer.music.load("06 - Top City.ogg") #background music
+pygame.mixer.music.play(-1) #allows music to play on loop
 
-num = 1#randint(1,2)
+num = 1
 if num == 1:
+
+    '''Begins a game of Yeet'n'Skeet. Initializes characters and backgrounds. 
+     Checks borders. Checks jumps. Accounts for keypresses. Updates screen. 
+     '''
+
+
     pygame.init()
+
+    #images used in the game
     yeet = pygame.image.load("yeet transparent.png")
     Skeet = pygame.image.load("skeet transparent.png")
     Dave = pygame.image.load('Dave transparent.png')
-    img = pygame.image.load("level 1 wip.png")
+    img = pygame.image.load("level 1 wip.png") #background image
     coin = pygame.image.load("coin.png")
     Skeet_win = pygame.image.load("skeet wins.png")
     yeet_win = pygame.image.load("yeet wins.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
-    screen = pygame.display.set_mode((1000,1000))
+    screen = pygame.display.set_mode((1000,1000)) #size of the window
     pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
     yeet_x = 10
@@ -82,38 +93,42 @@ if num == 1:
     yeet_on_ground = True
     yeet_jumping = False
     
-    move = 5
+    move = 5#how many pixels the characters move when coming into contact with a barrier
+    #and how far they move when walking
+
     Skeet_x = 879
     Skeet_y = 880
     Skeet_v = 0 # vertical velocity of Skeet
     Skeet_on_ground = True
     Skeet_jumping = False
 
+    #locations of the coins
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
-    coins_3 = [(360, 675), (615, 470), (20,55), (880, 75),(410,430)]
-    c = randint(1,3)
+    coins_3 = [(320, 675), (615, 470), (20,55), (880, 75),(410,430)]
+    c = randint(1,3) #which coin map the player will have
 
+    #scores of the characters
     yeet_score = 0
     Skeet_score = 0
     
-    is_dave = False
+    is_dave = False #tells whether or not the players have found Dave
 
-    running = True
+    running = True #tells whether the program is running
                
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w and not yeet_jumping:
-                    yeet_v = 10.5
-                    yeet_jumping = True
-                    yeet_on_ground = False
-                elif event.key == pygame.K_UP and not Skeet_jumping:
-                    Skeet_v = 10.5
-                    Skeet_jumping = True
-                    Skeet_on_ground = False
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_w and not yeet_jumping:
+            #         yeet_v = 10.5
+            #         yeet_jumping = True
+            #         yeet_on_ground = False
+            #     elif event.key == pygame.K_UP and not Skeet_jumping:
+            #         Skeet_v = 10.5
+            #         Skeet_jumping = True
+            #         Skeet_on_ground = False
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_d]:
@@ -124,7 +139,17 @@ if num == 1:
             Skeet_x -= move
         if keys[pygame.K_RIGHT]:
             Skeet_x += move
-            
+
+        #up and down
+        if keys[pygame.K_w]:
+            yeet_y +=move
+        if keys[pygame.K_s]:
+            yeet_y -= move
+        if keys[pygame.K_UP]:
+            Skeet_y -= move
+        if keys[pygame.K_DOWN]:
+            Skeet_y += move
+         
         #boundaries
         if yeet_x <= -10:
             yeet_x += move
@@ -367,9 +392,11 @@ if num == 1:
         display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
         pygame.display.update()
 
-        #Dave's cloud
-        i = 0
-        if c == 1:
+    
+        ### COINMAP 1 ###
+        i = 0 #index of coins
+        if c ==1:
+            #sees if yeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins:
                     if coins[i] == yeet_coord:
@@ -380,9 +407,9 @@ if num == 1:
                     elif yeet_coord != coins[i] and Skeet_coord != coins[i]:
                         screen.blit(coin, coins[i])
                     i += 1
-
-        i = 0
+        i = 0 #index of coins
         if c == 1:
+            #sees if skeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins:                    
                     if coins[i] == Skeet_coord:
@@ -393,7 +420,10 @@ if num == 1:
                         screen.blit(coin, coins[i])
                     i += 1
 
+        ### COINMAP 2 ###
+        i = 0#index of coins
         if c == 2:
+            #sees if skeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins_2:
                     yeet_coord = (yeet_x, yeet_y)
@@ -401,14 +431,15 @@ if num == 1:
 
                     if coins_2[i] == Skeet_coord:
                         Skeet_score += 1
-                        coins_s.play()
+                        coin_s.play()
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
                     i += 1
-        
+        #index of coins
         i = 0
         if c == 2:
+            ##sees if yeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins_2:
                     yeet_coord = (yeet_x, yeet_y)
@@ -420,6 +451,8 @@ if num == 1:
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
                     i += 1
+                    
+         ### COINMAP 3 ###
         i = 0#index of coins
         if c == 3:
             #sees if skeet has found a coin
@@ -467,8 +500,11 @@ if num == 1:
                 if is_dave == True:
                     if yeet_score > Skeet_score:
                         running = False
+
                         
         pygame.display.update()
+
+    #displays the winners according to who has a higher score
     if Skeet_score > yeet_score:
         screen.blit(Skeet_win, (1,1))
         display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
@@ -489,3 +525,46 @@ if num == 1:
     screen.blit(yeet, (yeet_x,yeet_y))
     screen.blit(Skeet, (Skeet_x,Skeet_y))
     pygame.display.update()
+
+
+
+#         # #coordinates of the characters
+#         # Dave_coord = (450,10)    
+#         # yeet_coord = (yeet_x, yeet_y)
+#         # Skeet_coord = (Skeet_x+1, Skeet_y)
+
+
+#         # #set background and display scores
+#         # screen.blit(img, (1,1))
+#         # display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10, WHITE)
+#         # display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
+        
+
+#         #Dave's cloud. 
+#         if is_dave == False:
+#             #tests if skeet has found Dave
+#             if Skeet_x >= 405 and Skeet_y == 5:
+#                 Skeet_score += 2
+#                 doggo_borko.play()
+#                 is_dave = True
+#                 if is_dave == True:
+#                     if Skeet_score > yeet_score:
+#                         running = False
+#             #tests if yeet has found Dave
+#             if yeet_x >= 405 and yeet_y == 5:
+#                 yeet_score += 2
+#                 doggo_borko.play()
+#                 is_dave = True
+#                 if is_dave == True:
+#                     if yeet_score > Skeet_score:
+#                         running = False
+
+                 
+#             # update_yeet()
+#             # update_skeet()
+#             # screen.blit(Dave, (450,10))
+#             # screen.blit(yeet, (yeet_x,yeet_y))
+#             # screen.blit(Skeet, (Skeet_x,Skeet_y))
+            
+#         pygame.display.update()
+        
