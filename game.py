@@ -101,9 +101,8 @@ def game():
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
     coins_3 = [(360, 675), (615, 470), (20,55), (880, 75),(410,430)]
-    c = randint(1,2) #which coin map the player will have
+    c = randint(1,3) #which coin map the player will have
 
-    c = 3
     #scores of the characters
     yeet_score = 0
     Skeet_score = 0
@@ -505,16 +504,16 @@ def game():
         
     #displays the winners according to who has a higher score
     if Skeet_score > yeet_score:
-            screen.blit(Skeet_win, (1,1))
-            display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
-            display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
-            pygame.display.update()
-            sleep(5)
+        screen.blit(Skeet_win, (1,1))
+        display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
+        display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
+        pygame.display.update()
+        time.sleep(5)
     if yeet_score > Skeet_score:
         screen.blit(yeet_win, (1,1))
         display_text(screen, f'Yeet won with a score of:{yeet_score}', 40, 500, 150,BLACK)
         display_text(screen, f'THANK YOU FOR PLAYING!', 40, 500, 240,BLACK)
         pygame.display.update()
-        sleep(5)
+        time.sleep(5)
 
 game()
