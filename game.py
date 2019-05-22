@@ -4,20 +4,18 @@ import itertools
 from pygame import mixer
 from random import randint
 import math
-import time
+from time import sleep
 clock = pygame.time.Clock()
 vec = pygame.math.Vector2
 
 yeet_on_ground = True
 yeet_jumping = False
 Skeet_on_ground = True
-
 Skeet_jumping = False
 
 def update_yeet():
-    global yeet_v, yeet_y, yeet_jumping
+    global yeet_v, yeet_y,yeet_jumping
     if yeet_jumping:
-        yeet_on_ground = False
         if yeet_v > 0 :
             f = (0.5 * yeet_v**2)
         else:
@@ -27,12 +25,10 @@ def update_yeet():
         if yeet_y > 880:
             yeet_y = 880
             yeet_jumping = False
-            yeet_on_ground = True
             yeet_v = 0
-        yeet_collision()
 
 def update_skeet():
-    global Skeet_v, Skeet_y, Skeet_jumping
+    global Skeet_v, Skeet_y,Skeet_jumping
     if Skeet_jumping:
         if Skeet_v > 0 :
             f = (0.5 * Skeet_v**2)
@@ -44,110 +40,97 @@ def update_skeet():
             Skeet_y = 880
             Skeet_jumping = False
             Skeet_v = 0
-        Skeet_collision()
-
-box_list = pygame.sprite.Group()            
 
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
+#colors and set up for fonts
+WHITE = (255,255,255)
+BLACK = (0,0,0)
 font_name = pygame.font.match_font('arial')
 def display_text(surf, text, size, x, y, color):
+    '''allows text to be displayed on screen'''
     font = pygame.font.Font(font_name, size)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
     surf.blit (text_surface, text_rect)
 
+#music and sounds used in game
 pygame.mixer.init()
 coin_s = pygame.mixer.Sound("coin_sound.wav")
 doggo_borko = pygame.mixer.Sound("277058__kwahmah-02__single-dog-bark.wav")
-pygame.mixer.music.load("06 - Top City.mp3")
-pygame.mixer.music.play(-1)
-
+pygame.mixer.music.load("06 - Top City.ogg") #background music
+pygame.mixer.music.play(-1) #allows music to play on loop
 
 num = 1
 if num == 1:
+
+    '''Begins a game of Yeet'n'Skeet. Initializes characters and backgrounds. 
+     Checks borders. Checks jumps. Accounts for keypresses. Updates screen. 
+     '''
     pygame.init()
+
+    #images used in the game
     yeet = pygame.image.load("yeet transparent.png")
-    yeet_rect = yeet.get_rect()
     Skeet = pygame.image.load("skeet transparent.png")
-    Skeet_rect = Skeet.get_rect()
     Dave = pygame.image.load('Dave transparent.png')
-    img = pygame.image.load("level 1 wip.png")
+    img = pygame.image.load("level 1 wip.png") #background image
     coin = pygame.image.load("coin.png")
     Skeet_win = pygame.image.load("skeet wins.png")
     yeet_win = pygame.image.load("yeet wins.png")
     pygame.display.set_icon(img) #sets an icon for the window
 
-    screen = pygame.display.set_mode((850,850))
+    screen = pygame.display.set_mode((1000,1000)) #size of the window
     pygame.display.set_caption("Yeet 'n' Skeet") #name for the window
 
-    def yeet_collision():
-    global yeet, yeet_v, yeet_y, platforms
-    # check if player hits a platform - only if falling
-    if yeet_v > 0:
-        hits = pygame.sprite.spritecollide(yeet, platforms, False)
-        if hits:
-            yeet_y = hits[0]
-            yeet_v = 0
-
-    def Skeet_collision():
-        global Skeet, Skeet_v, Skeet_y, platforms
-        # check if player hits a platform - only if falling
-        if Skeet_v > 0:
-            hits = pygame.sprite.spritecollide(Skeet, platforms, False)
-            if hits:
-                Skeet_y = hits[0]
-                Skeet_v = 0
-
-    # Array with width, height, x, and y of platform
-    # platforms = [[15, 10, 280, 675]]
-    # if len(box_list) < 3:
-    #     for i in len(platforms):
-    #         block = platform[0], platform[1]
-    #         block.rect.x = platform[2]
-    #         block.rect.y = platform[3]
-    #         box_list.add(block)
-
     yeet_x = 10
-    yeet_y = 850
+    yeet_y = 880
     yeet_v = 0 # vertical velocity of yeet
     yeet_on_ground = True
     yeet_jumping = False
     
-    move = 5
-    Skeet_x = 835 #875
-    Skeet_y = 850 #880
+    move = 5#how many pixels the characters move when coming into contact with a barrier
+    #and how far they move when walking
+
+    Skeet_x = 879
+    Skeet_y = 880
     Skeet_v = 0 # vertical velocity of Skeet
     Skeet_on_ground = True
     Skeet_jumping = False
 
+    #locations of the coins
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
-
-    c = randint(1,2)
-
+    coins_3 = [(305, 670), (615, 470), (20,55), (880, 75),(410,430)]
+    c = randint(1,3) #which coin map the player will have
+    c=3
+    #scores of the characters
     yeet_score = 0
     Skeet_score = 0
     
-    is_dave = False
+    is_dave = False #tells whether or not the players have found Dave
 
-    running = True
+    running = True #tells whether the program is running
                
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w and not yeet_jumping:
-                    yeet_v = 10.5
-                    yeet_jumping = True
-                    yeet_on_ground = False
-                elif event.key == pygame.K_UP and not Skeet_jumping:
-                    Skeet_v = 10.5
-                    Skeet_jumping = True
-                    Skeet_on_ground = False
+#            if event.type == pygame.MOUSEBUTTONDOWN:
+#                print(pygame.mouse.get_pos())
+#                print(f"{yeet_x} {yeet_y}")
+#                print(f"{Skeet_x} {Skeet_y}")
+#                print()
+            #if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_w and not yeet_jumping:
+            #         yeet_v = 10.5
+            #         yeet_jumping = True
+            #         yeet_on_ground = False
+#                 if event.key == pygame.K_UP and not Skeet_jumping:
+#                     Skeet_v = 10.5
+#                     Skeet_jumping = True
+#                     Skeet_on_ground = False
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_d]:
@@ -158,254 +141,266 @@ if num == 1:
             Skeet_x -= move
         if keys[pygame.K_RIGHT]:
             Skeet_x += move
-            
+
+        #up and down
+        if keys[pygame.K_s]:
+            yeet_y +=move
+        if keys[pygame.K_w]:
+            yeet_y -= move
+        if keys[pygame.K_UP]:
+            Skeet_y -= move
+        if keys[pygame.K_DOWN]:
+            Skeet_y += move
+         
         #boundaries
         if yeet_x <= -10:
             yeet_x += move
-        elif Skeet_x <= -10:
+        if Skeet_x <= -10:
             Skeet_x += move
 
-        elif yeet_x >= 930:
+        if yeet_x >= 930:
             yeet_x -=move
-        elif Skeet_x >= 930:    ##having trouble with Skeet right barrier
+        if Skeet_x >= 930:    ##having trouble with Skeet right barrier
             Skeet_x -= move
 
-        elif yeet_y >= 900:
+        if yeet_y >= 900:
             yeet_y -= move
-        elif Skeet_y >= 900:
+        if Skeet_y >= 900:
             Skeet_y -= move
 
-        elif yeet_y <=0:
+        if yeet_y <=0:
             yeet_y+= move
-        elif Skeet_y <= 0:
+        if Skeet_y <= 0:
             Skeet_y -=move
 
-         ### tree border  
-        elif yeet_x == 400 and yeet_y >= 625: 
+        # tree border  
+        if yeet_x == 400 and yeet_y >= 625: 
             yeet_x -= move 
-        elif Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=625:
+        if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=625:
             Skeet_x +=move
            
-        elif Skeet_x >= 400 and Skeet_x<=450 and Skeet_y >= 625: 
+        if Skeet_x >= 400 and Skeet_x<=450 and Skeet_y >= 625: 
             Skeet_x -= move 
-        elif yeet_x <= 550 and yeet_x >= 500 and yeet_y >=630:
+        if yeet_x <= 550 and yeet_x >= 500 and yeet_y >=630:
             yeet_x +=move
-
-        
+            
         #top tree border
-        elif yeet_y >= 625 and yeet_y <= 630 and yeet_x >= 400 and yeet_x <=550:
+        if yeet_y == 625 and yeet_x >= 400 and yeet_x <=550:
             yeet_y -= move
-            Skeet_jumping = False
-        elif Skeet_y >= 625 and Skeet_y <= 630 and Skeet_x >= 400 and Skeet_x <=550:
+        if Skeet_y == 625 and Skeet_x >= 400 and Skeet_x <=550:
             Skeet_y -= move
-            Skeet_jumping = False
-
+            
         #leaf tree border
-        elif yeet_x >= 280 and yeet_x <= 680 and yeet_y >= 675 and yeet_y <= 680:
+        if yeet_x >= 280 and yeet_x <= 680 and yeet_y >= 675 and yeet_y <= 680:
             yeet_y -= move
             yeet_jumping = False
-        elif Skeet_x >= 280 and Skeet_x <= 680 and Skeet_y >= 675 and Skeet_y <=680:
+        if Skeet_x >= 280 and Skeet_x <= 680 and Skeet_y >= 675 and Skeet_y <=680:
             Skeet_y -= move
             Skeet_jumping = False
-
+            
+            
         ##bottom of leaves
-        elif yeet_y <= 830 and yeet_x >= 285 and yeet_x <= 655:
+        if yeet_y == 830 and yeet_x >= 285 and yeet_x <= 655:
             yeet_y += move
+            
         ##Trunks left side
-        elif yeet_y == 600 and yeet_x <=213:
+        if yeet_y == 600 and yeet_x <=213:
             yeet_y -= move
-
-        elif yeet_y == 520 and yeet_x <= 90:
+        if yeet_y == 520 and yeet_x <= 90:
+            yeet_y -= move
+        if yeet_y == 755 and yeet_x <= 170:
+            yeet_y += move
+        if yeet_y == 360 and yeet_x <= 5:
             yeet_y -= move
         
-        elif yeet_y == 755 and yeet_x <= 170:
+        if yeet_y == 210 and yeet_x <= 45:
             yeet_y += move
-
-        elif yeet_y == 360 and yeet_x <= 5:
+        if yeet_y == 245 and yeet_x >= 45 and yeet_x <= 240:
+            yeet_y += move
+        if yeet_y == 115 and yeet_x <= 235:
             yeet_y -= move
-        
-        elif yeet_y == 210 and yeet_x <= 45:
-            yeet_y += move
-        elif yeet_y == 245 and yeet_x >= 45 and yeet_x <= 240:
-            yeet_y += move
-        elif yeet_y == 115 and yeet_x <= 235:
-            yeet_y -= move
-        elif yeet_y == 60 and yeet_x <= 100:
+        if yeet_y == 60 and yeet_x <= 100:
             yeet_y -= move
         
         ##Trunks right side
-        elif yeet_y == 745 and yeet_x >=775:
+        if yeet_y == 745 and yeet_x >=775:
             yeet_y += move
-        elif yeet_y == 605 and yeet_x >=775:
+        if yeet_y == 605 and yeet_x >=775:
             yeet_y -= move
-        elif yeet_y == 515 and yeet_x >= 845:
+        if yeet_y == 515 and yeet_x >= 845:
             yeet_y -= move
-        elif yeet_y == 355 and yeet_x >= 925:
+        if yeet_y == 355 and yeet_x >= 925:
             yeet_y -= move
-        elif yeet_y == 220 and yeet_x >=880:
+        if yeet_y == 220 and yeet_x >=880:
             yeet_y += move
-        elif yeet_y == 260 and yeet_x >=655 and yeet_x <= 855:
+        if yeet_y == 260 and yeet_x >=655 and yeet_x <= 855:
             yeet_y += move
-        elif yeet_y == 125 and yeet_x >= 650:
+        if yeet_y == 125 and yeet_x >= 650:
             yeet_y -= move
-        elif yeet_y == 80 and yeet_x >= 805:
+        if yeet_y == 80 and yeet_x >= 805:
             yeet_y -= move
         
         #### SKEET BORDERS ######
 
         ##bottom of leaves
-        elif Skeet_y == 830 and Skeet_x >= 285 and Skeet_x <= 655:
+        if Skeet_y == 830 and Skeet_x >= 285 and Skeet_x <= 655:
             Skeet_y += move
+            
         ##Trunks left side
-        elif Skeet_y == 600 and Skeet_x <=213:
+        if Skeet_y == 600 and Skeet_x <=213:
+            Skeet_y -= move    
+        if Skeet_y == 520 and Skeet_x <= 90:
             Skeet_y -= move
-
-        elif Skeet_y == 520 and Skeet_x <= 90:
+        if Skeet_y == 755 and Skeet_x <= 170:
+            Skeet_y += move
+        if Skeet_y == 360 and Skeet_x <= 5:
             Skeet_y -= move
         
-        elif Skeet_y == 755 and Skeet_x <= 170:
+        if Skeet_y == 210 and Skeet_x <= 45:
             Skeet_y += move
-
-        elif Skeet_y == 360 and Skeet_x <= 5:
+        if Skeet_y == 245 and Skeet_x >= 45 and Skeet_x <= 240:
+            Skeet_y += move
+        if Skeet_y == 115 and Skeet_x <= 235:
             Skeet_y -= move
-        
-        elif Skeet_y == 210 and Skeet_x <= 45:
-            Skeet_y += move
-        elif Skeet_y == 245 and Skeet_x >= 45 and Skeet_x <= 240:
-            Skeet_y += move
-        elif Skeet_y == 115 and Skeet_x <= 235:
-            Skeet_y -= move
-        elif Skeet_y == 60 and Skeet_x <= 100:
+        if Skeet_y == 60 and Skeet_x <= 100:
             Skeet_y -= move
         
         ##Trunks right side
-        elif Skeet_y == 745 and Skeet_x >=775:
+        if Skeet_y == 745 and Skeet_x >=775:
             Skeet_y += move
-        elif Skeet_y == 605 and Skeet_x >=775:
+        if Skeet_y == 605 and Skeet_x >=775:
             Skeet_y -= move
-        elif Skeet_y == 515 and Skeet_x >= 845:
+        if Skeet_y == 515 and Skeet_x >= 845:
             Skeet_y -= move
-        elif Skeet_y == 355 and Skeet_x >= 925:
+        if Skeet_y == 355 and Skeet_x >= 925:
             Skeet_y -= move
-        elif Skeet_y == 220 and Skeet_x >=880:
+        if Skeet_y == 220 and Skeet_x >=880:
             Skeet_y += move
-        elif Skeet_y == 260 and Skeet_x >=655 and Skeet_x <= 855:
+        if Skeet_y == 260 and Skeet_x >=655 and Skeet_x <= 855:
             Skeet_y += move
-        elif Skeet_y == 125 and Skeet_x >= 650:
+        if Skeet_y == 125 and Skeet_x >= 650:
             Skeet_y -= move
-        elif Skeet_y == 80 and Skeet_x >= 805:
+        if Skeet_y == 80 and Skeet_x >= 805:
             Skeet_y -= move
 
-        elif yeet_x <= -10:
+        if yeet_x <= -10:
             yeet_x += move
-        elif Skeet_x <= -10:
+        if Skeet_x <= -10:
             Skeet_x += move
             
-        elif yeet_x >= 930:
+        if yeet_x >= 930:
             yeet_x -= move
-        elif Skeet_x >= 930:
+        if Skeet_x >= 930:
             Skeet_x -= move
             
-        elif yeet_y <= 0:
+        if yeet_y <= 0:
             yeet_y += move
-        elif yeet_y >= 900:
+        if yeet_y >= 900:
             yeet_y -= move
-        elif Skeet_y <= 0:
+        if Skeet_y <= 0:
             Skeet_y += move
-        elif Skeet_y >= 900:
+        if Skeet_y >= 900:
             Skeet_y -= move
 
         #top middle Yeet
-        elif yeet_x >= 350 and yeet_x <= 510:
+        if yeet_x >= 350 and yeet_x <= 510:
             if yeet_y <= 200 and yeet_y >= 125:
                 yeet_y -= move
-        elif yeet_x >= 350 and yeet_x <= 510:
+        if yeet_x >= 350 and yeet_x <= 510:
             if yeet_y <= 250 and yeet_y >= 200:
                 yeet_y += move
 
-        elif yeet_x == 345: 
+        if yeet_x == 345: 
             if yeet_y <= 255 and yeet_y >= 115:
                 yeet_x -= move
-        elif yeet_x == 515:
+        if yeet_x == 515:
             if yeet_y <= 255 and yeet_y >= 115:
                 yeet_x += move
 
         #top middle Skeet
-        elif Skeet_x >= 350 and Skeet_x <= 475:
+        if Skeet_x >= 350 and Skeet_x <= 475:
             if Skeet_y <= 200 and Skeet_y >= 125:
                 Skeet_y -= move
-        elif Skeet_x >= 350 and Skeet_x <= 490:
+        if Skeet_x >= 350 and Skeet_x <= 490:
             if Skeet_y <= 250 and Skeet_y >= 200:
                 Skeet_y += move
-        elif Skeet_x == 345: 
+        if Skeet_x == 345: 
             if Skeet_y <= 255 and Skeet_y >= 115:
                 Skeet_x -= move
-        elif Skeet_x == 515:
+        if Skeet_x == 515:
             if Skeet_y <= 160 and Skeet_y >= 115:
                 Skeet_x += move
             
         #middle 
-        elif yeet_y >= 475 and yeet_y <= 480 and yeet_x >= 230 and yeet_x <= 710:
+        if yeet_y == 475 and yeet_x >= 230 and yeet_x<=710:
             yeet_y -= move
-            yeet_jumping = False
-        elif yeet_y >= 435 and yeet_y <= 440 and yeet_x >=365 and yeet_x <= 555:
+        if yeet_y == 435 and yeet_x >=365 and yeet_x <= 555:
             yeet_y -= move
-            yeet_jumping = False
-        elif yeet_y >= 590 and yeet_y <= 595 and yeet_x >=240 and yeet_x <=375:
+        if yeet_y == 590 and yeet_x >=240 and yeet_x <=375:
             yeet_y += move
-            yeet_jumping = False
-        elif yeet_y == 570 and yeet_x >= 375 and yeet_x <= 555:
+        if yeet_y == 570 and yeet_x >= 375 and yeet_x <= 555:
             yeet_y += move
-        elif yeet_y == 590 and yeet_x >= 555 and yeet_x <= 705:
+        if yeet_y == 590 and yeet_x >= 555 and yeet_x <= 705:
             yeet_y += move
         
 
         #middle two 
-        elif yeet_y == 290 and yeet_x >=570 and yeet_x<=800:
+        if yeet_y == 290 and yeet_x >=570 and yeet_x<=800:
             yeet_y -= move
-        elif yeet_y == 420 and yeet_x >= 570 and yeet_x <= 800:
+        if yeet_y == 420 and yeet_x >= 570 and yeet_x <= 800:
             yeet_y += move
         
-        elif yeet_y == 280 and yeet_x >=100 and yeet_x <= 345:
+        if yeet_y == 280 and yeet_x >=100 and yeet_x <= 345:
             yeet_y -= move
-        elif yeet_y == 415 and yeet_x >= 110 and yeet_x <= 340:
+        if yeet_y == 415 and yeet_x >= 110 and yeet_x <= 340:
             yeet_y += move
         
 
         #middle Skeet
-        elif Skeet_y == 475 and Skeet_x >= 230 and Skeet_x<=710:
+        if Skeet_y == 475 and Skeet_x >= 230 and Skeet_x<=710:
             Skeet_y -= move
-        elif Skeet_y == 435 and Skeet_x >=365 and Skeet_x <= 555:
+            Skeet_jumping = False
+        if Skeet_y == 435 and Skeet_x >=365 and Skeet_x <= 555:
             Skeet_y -= move
-        elif Skeet_y == 590 and Skeet_x >=240 and Skeet_x <=375:
+            Skeet_jumping = False
+        if Skeet_y == 590 and Skeet_x >=240 and Skeet_x <=375:
             Skeet_y += move
-        elif Skeet_y == 570 and Skeet_x >= 375 and Skeet_x <= 555:
+        if Skeet_y == 570 and Skeet_x >= 375 and Skeet_x <= 555:
             Skeet_y += move
-        elif Skeet_y == 590 and Skeet_x >= 555 and Skeet_x <= 705:
+        if Skeet_y == 590 and Skeet_x >= 555 and Skeet_x <= 705:
             Skeet_y += move
         
 
         #middle two Skeet 
 
-        elif Skeet_y == 290 and Skeet_x >=570 and Skeet_x<=800:
+        if Skeet_y == 290 and Skeet_x >=570 and Skeet_x<=800:
             Skeet_y -= move
-        elif Skeet_y == 420 and Skeet_x >= 570 and Skeet_x <= 800:
+        if Skeet_y == 420 and Skeet_x >= 570 and Skeet_x <= 800:
             Skeet_y += move
         
-        elif Skeet_y == 280 and Skeet_x >=100 and Skeet_x <= 345:
+        if Skeet_y == 280 and Skeet_x >=100 and Skeet_x <= 345:
             Skeet_y -= move
-        elif Skeet_y == 415 and Skeet_x >= 110 and Skeet_x <= 340:
+        if Skeet_y == 415 and Skeet_x >= 110 and Skeet_x <= 340:
             Skeet_y += move
 
         
-        
-        #Dave's cloud
-
+        update_yeet()
+        update_skeet()
         yeet_coord = (yeet_x, yeet_y)
         Skeet_coord = (Skeet_x+1, Skeet_y)
+        screen.blit(img, (1,1))
+        screen.blit(Dave, (450,10))
+        screen.blit(yeet, (yeet_x,yeet_y))
+        screen.blit(Skeet, (Skeet_x,Skeet_y))
+        display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10, WHITE)
+        display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
+        pygame.display.update()
 
-        i = 0
-        if c == 1:
+    
+        ### COINMAP 1 ###
+        i = 0 #index of coins
+        if c ==1:
+            #sees if yeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins:
                     if coins[i] == yeet_coord:
@@ -416,9 +411,9 @@ if num == 1:
                     elif yeet_coord != coins[i] and Skeet_coord != coins[i]:
                         screen.blit(coin, coins[i])
                     i += 1
-
-        i = 0
+        i = 0 #index of coins
         if c == 1:
+            #sees if skeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins:                    
                     if coins[i] == Skeet_coord:
@@ -429,7 +424,10 @@ if num == 1:
                         screen.blit(coin, coins[i])
                     i += 1
 
+        ### COINMAP 2 ###
+        i = 0#index of coins
         if c == 2:
+            #sees if skeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins_2:
                     yeet_coord = (yeet_x, yeet_y)
@@ -437,14 +435,15 @@ if num == 1:
 
                     if coins_2[i] == Skeet_coord:
                         Skeet_score += 1
-                        coins_s.play()
+                        coin_s.play()
                         del coins_2[i]
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
                     i += 1
-        
+        #index of coins
         i = 0
         if c == 2:
+            ##sees if yeet has found a coin
             if len(coins_2) > 0:
                 for ele in coins_2:
                     yeet_coord = (yeet_x, yeet_y)
@@ -456,6 +455,8 @@ if num == 1:
                     elif yeet_coord != coins_2[i] and Skeet_coord != coins_2[i]:
                         screen.blit(coin, coins_2[i])
                     i += 1
+                    
+         ### COINMAP 3 ###
         i = 0#index of coins
         if c == 3:
             #sees if skeet has found a coin
@@ -503,17 +504,9 @@ if num == 1:
                 if is_dave == True:
                     if yeet_score > Skeet_score:
                         running = False
-                        
-        update_yeet()
-        update_skeet()
-        screen.blit(img, (1,1))
-        screen.blit(Dave, (450,10))
-        screen.blit(yeet, (yeet_x,yeet_y))
-        screen.blit(Skeet, (Skeet_x,Skeet_y))
-        display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10, WHITE)
-        display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
         pygame.display.update()
 
+    #displays the winners according to who has a higher score
     if Skeet_score > yeet_score:
         screen.blit(Skeet_win, (1,1))
         display_text(screen, f'Skeet won with a score of:{Skeet_score}', 40, 500, 150,BLACK)
@@ -533,4 +526,4 @@ if num == 1:
     # screen.blit(Dave, (450,10))
     # screen.blit(yeet, (yeet_x,yeet_y))
     # screen.blit(Skeet, (Skeet_x,Skeet_y))
-    #pygame.display.update()
+    # pygame.display.update()
