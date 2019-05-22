@@ -4,14 +4,13 @@ import itertools
 from pygame import mixer
 from random import randint
 import math
-import time
+from time import sleep
 clock = pygame.time.Clock()
 vec = pygame.math.Vector2
 
 yeet_on_ground = True
 yeet_jumping = False
 Skeet_on_ground = True
-
 Skeet_jumping = False
 
 def update_yeet():
@@ -70,8 +69,6 @@ if num == 1:
     '''Begins a game of Yeet'n'Skeet. Initializes characters and backgrounds. 
      Checks borders. Checks jumps. Accounts for keypresses. Updates screen. 
      '''
-
-
     pygame.init()
 
     #images used in the game
@@ -105,9 +102,9 @@ if num == 1:
     #locations of the coins
     coins = [(465,430), (250,275), (605,285), (10, 355), (925, 350)]
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
-    coins_3 = [(320, 675), (615, 470), (20,55), (880, 75),(410,430)]
+    coins_3 = [(305, 670), (615, 470), (20,55), (880, 75),(410,430)]
     c = randint(1,3) #which coin map the player will have
-
+    c=3
     #scores of the characters
     yeet_score = 0
     Skeet_score = 0
@@ -120,15 +117,20 @@ if num == 1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            # if event.type == pygame.KEYDOWN:
+#            if event.type == pygame.MOUSEBUTTONDOWN:
+#                print(pygame.mouse.get_pos())
+#                print(f"{yeet_x} {yeet_y}")
+#                print(f"{Skeet_x} {Skeet_y}")
+#                print()
+            #if event.type == pygame.KEYDOWN:
             #     if event.key == pygame.K_w and not yeet_jumping:
             #         yeet_v = 10.5
             #         yeet_jumping = True
             #         yeet_on_ground = False
-            #     elif event.key == pygame.K_UP and not Skeet_jumping:
-            #         Skeet_v = 10.5
-            #         Skeet_jumping = True
-            #         Skeet_on_ground = False
+#                 if event.key == pygame.K_UP and not Skeet_jumping:
+#                     Skeet_v = 10.5
+#                     Skeet_jumping = True
+#                     Skeet_on_ground = False
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_d]:
@@ -141,9 +143,9 @@ if num == 1:
             Skeet_x += move
 
         #up and down
-        if keys[pygame.K_w]:
-            yeet_y +=move
         if keys[pygame.K_s]:
+            yeet_y +=move
+        if keys[pygame.K_w]:
             yeet_y -= move
         if keys[pygame.K_UP]:
             Skeet_y -= move
@@ -171,7 +173,7 @@ if num == 1:
         if Skeet_y <= 0:
             Skeet_y -=move
 
-         ### tree border  
+        # tree border  
         if yeet_x == 400 and yeet_y >= 625: 
             yeet_x -= move 
         if Skeet_x <= 550 and Skeet_x >= 500 and Skeet_y >=625:
@@ -181,11 +183,13 @@ if num == 1:
             Skeet_x -= move 
         if yeet_x <= 550 and yeet_x >= 500 and yeet_y >=630:
             yeet_x +=move
+            
         #top tree border
         if yeet_y == 625 and yeet_x >= 400 and yeet_x <=550:
             yeet_y -= move
         if Skeet_y == 625 and Skeet_x >= 400 and Skeet_x <=550:
             Skeet_y -= move
+            
         #leaf tree border
         if yeet_x >= 280 and yeet_x <= 680 and yeet_y >= 675 and yeet_y <= 680:
             yeet_y -= move
@@ -193,19 +197,19 @@ if num == 1:
         if Skeet_x >= 280 and Skeet_x <= 680 and Skeet_y >= 675 and Skeet_y <=680:
             Skeet_y -= move
             Skeet_jumping = False
+            
+            
         ##bottom of leaves
         if yeet_y == 830 and yeet_x >= 285 and yeet_x <= 655:
             yeet_y += move
+            
         ##Trunks left side
         if yeet_y == 600 and yeet_x <=213:
             yeet_y -= move
-
         if yeet_y == 520 and yeet_x <= 90:
             yeet_y -= move
-        
         if yeet_y == 755 and yeet_x <= 170:
             yeet_y += move
-
         if yeet_y == 360 and yeet_x <= 5:
             yeet_y -= move
         
@@ -241,16 +245,14 @@ if num == 1:
         ##bottom of leaves
         if Skeet_y == 830 and Skeet_x >= 285 and Skeet_x <= 655:
             Skeet_y += move
+            
         ##Trunks left side
         if Skeet_y == 600 and Skeet_x <=213:
-            Skeet_y -= move
-
+            Skeet_y -= move    
         if Skeet_y == 520 and Skeet_x <= 90:
             Skeet_y -= move
-        
         if Skeet_y == 755 and Skeet_x <= 170:
             Skeet_y += move
-
         if Skeet_y == 360 and Skeet_x <= 5:
             Skeet_y -= move
         
@@ -357,8 +359,10 @@ if num == 1:
         #middle Skeet
         if Skeet_y == 475 and Skeet_x >= 230 and Skeet_x<=710:
             Skeet_y -= move
+            Skeet_jumping = False
         if Skeet_y == 435 and Skeet_x >=365 and Skeet_x <= 555:
             Skeet_y -= move
+            Skeet_jumping = False
         if Skeet_y == 590 and Skeet_x >=240 and Skeet_x <=375:
             Skeet_y += move
         if Skeet_y == 570 and Skeet_x >= 375 and Skeet_x <= 555:
@@ -525,46 +529,3 @@ if num == 1:
     screen.blit(yeet, (yeet_x,yeet_y))
     screen.blit(Skeet, (Skeet_x,Skeet_y))
     pygame.display.update()
-
-
-
-#         # #coordinates of the characters
-#         # Dave_coord = (450,10)    
-#         # yeet_coord = (yeet_x, yeet_y)
-#         # Skeet_coord = (Skeet_x+1, Skeet_y)
-
-
-#         # #set background and display scores
-#         # screen.blit(img, (1,1))
-#         # display_text(screen, f'Yeet Score:{yeet_score}', 28, 155, 10, WHITE)
-#         # display_text(screen, f'Skeet Score:{Skeet_score}', 28, 810, 10, WHITE)
-        
-
-#         #Dave's cloud. 
-#         if is_dave == False:
-#             #tests if skeet has found Dave
-#             if Skeet_x >= 405 and Skeet_y == 5:
-#                 Skeet_score += 2
-#                 doggo_borko.play()
-#                 is_dave = True
-#                 if is_dave == True:
-#                     if Skeet_score > yeet_score:
-#                         running = False
-#             #tests if yeet has found Dave
-#             if yeet_x >= 405 and yeet_y == 5:
-#                 yeet_score += 2
-#                 doggo_borko.play()
-#                 is_dave = True
-#                 if is_dave == True:
-#                     if yeet_score > Skeet_score:
-#                         running = False
-
-                 
-#             # update_yeet()
-#             # update_skeet()
-#             # screen.blit(Dave, (450,10))
-#             # screen.blit(yeet, (yeet_x,yeet_y))
-#             # screen.blit(Skeet, (Skeet_x,Skeet_y))
-            
-#         pygame.display.update()
-        
