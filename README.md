@@ -1,7 +1,7 @@
  <h1> YEET 'N SKEET GAME MANUAL <img src="Dave transparent.png" alt="" </h1>
 
    <h2>DESCRIPTION:</h2>
-    In a lush, mountainous region in Wales, two teens, Yeet and Skeet, skate at a bike park with their beloved dog, Dave.
+    In a lush, mountainous region in Wales, two teens, Yeet and Skeet, walk at a park with their beloved dog, Dave, to try out their brand new jet packs at a good space.
     One day, the three go far off the beaten path, and venture deeper into the terrain. Until they become lost in the woods, the teens stop and rest only to realize they lost Dave! The two boys determine to retrace their tracks quickly as possible in hopes to find their dog. Once Dave is spotted the two boys decide to have a little fun and race to retrieve Dave. Come along to help Yeet and Skeet get to Dave!
 <p>===============================================================================</p>
 
@@ -10,8 +10,8 @@
 
 **•How do you play?:**
 <br />-You and one friend will play as Yeet and Skeet. 
-<br />-Yeet has the controls W,A,D (w = jump, A= move left, and D = move right.) 
-<br />-Skeet has the controls Up_arrow, Left_arrow, and Right_arrow (Up = jump, Left = move left, and Right = move right) </br>
+<br />-Yeet has the controls W,S,A,D (W = fly up, S = descend, A = move left, and D = move right.) 
+<br />-Skeet has the controls Up_arrow, Down_arrow, Left_arrow, and Right_arrow (Up = fly up, Down = descend Left = move left, and Right = move right) </br>
       
 **•What is the goal?:**
       <br />-Collect as many coins as you can.
@@ -22,8 +22,8 @@
       <br />-A win screen will appear displaying the winner's score and the game will close.</br>
       
 <h3>INPUTS AND EXPLANATIONS:</h3>
- <br />Skeet controls: Up_arrow, Left_arrow, Right_arrow
-<br /> Yeet controls: W(jump),A(left),D(right)
+ <br />Skeet controls: Up_arrow(fly up), Down_arrow(descend), Left_arrow(left), Right_arrow(right)
+<br /> Yeet controls: W(fly up), S(descend), A(left), D(right)
 
 <h3>GRAPHICS:</h3>
 <p><img src="Dave transparent.png" alt="Dave the dog" /></p>
