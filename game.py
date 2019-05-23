@@ -104,7 +104,7 @@ if num == 1:
     coins_2 = [(465,430), (145,595), (805,600), (475,620), (420,115)]
     coins_3 = [(305, 670), (615, 470), (20,55), (880, 75),(410,430)]
     c = randint(1,3) #which coin map the player will have
-    c=3
+    
     #scores of the characters
     yeet_score = 0
     Skeet_score = 0
